@@ -2,6 +2,14 @@
 Dotfiles for my linux systems
 
 # Cloning to new system
+
+## Configuration script
+
+```
+curl -Lks http://bit.do/jay-dotfiles | sh
+```
+
+## Manual
 1. Set the alias for the dotfiles repo
 ```
 echo "alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'" >> $HOME/.zsh/aliasrc
