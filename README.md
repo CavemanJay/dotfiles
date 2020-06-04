@@ -26,13 +26,15 @@ alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 ```
 config checkout
 ```
-    * If the initial checkout fails:
-    ```
-    mkdir -p $HOME/.config-backup && \
-    config checkout 2>&1 | egrep "\s+\." | awk {'print $1'} | \
-    xargs -I{} mv {} .config-backup/{}
-    ```
-    * Rerun `config checkout`
+
+   * If the initial checkout fails:
+     ```
+     mkdir -p $HOME/.config-backup && \
+     config checkout 2>&1 | egrep "\s+\." | awk {'print $1'} | \
+     xargs -I{} mv {} .config-backup/{}
+     ```
+     
+   * Rerun `config checkout`
 
 6. Set the local repo to not show untracked files 
 ```
