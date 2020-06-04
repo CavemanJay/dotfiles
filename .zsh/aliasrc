@@ -47,3 +47,11 @@ alias edit_aliases='${=EDITOR} ~/.zsh/aliasrc'
 alias awe='code $HOME/.config/awesome'
 alias kali='exec VBoxManage startvm kali'
 alias config='/usr/bin/git --git-dir=$HOME/dotfiles --work-tree=$HOME'
+
+# Function to show a markdown document in a browser
+# Requires grip (pip install grip)
+function md(){
+    echo "Starting grip server"
+    grip -b --quiet 1>/dev/null $1 &
+    jobs
+}
