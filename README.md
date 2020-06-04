@@ -9,7 +9,7 @@ echo "alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'" 
 
 2. Add to .gitignore to prevent recursion problems
 ```
-echo ".dotfiles" >> .gitignore
+echo ".dotfiles" >> $HOME/.gitignore
 ```
 
 3. Clone the repository
@@ -31,7 +31,7 @@ config checkout
      ```
      mkdir -p $HOME/.config-backup && \
      config checkout 2>&1 | egrep "\s+\." | awk {'print $1'} | \
-     xargs -I{} mv {} .config-backup/{}
+     xargs -I{} mv {} $HOME/.config-backup/{}
      ```
      
    * Rerun `config checkout`
@@ -39,4 +39,9 @@ config checkout
 6. Set the local repo to not show untracked files 
 ```
 config config --local status.showUntrackedFiles no
+```
+
+7. Remove .gitignore (optional)
+```
+rm $HOME/.gitignore
 ```
