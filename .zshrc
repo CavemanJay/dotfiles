@@ -60,6 +60,7 @@ source /usr/share/doc/pkgfile/command-not-found.zsh # Enable command not found
 export PATH="$PATH:$HOME/.vim/bundle/vim-superman/bin"
 compdef vman="man"
 
+eval $(gh completion -s zsh)
 eval $(thefuck --alias)
 
 neofetch

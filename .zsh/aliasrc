@@ -1,6 +1,3 @@
-
-alias remove_unused_dependencies='sudo pacman -Rns $(pacman -Qtdq)'
-
 # Changing "ls" to "exa"
 alias ls='exa -a --color=always --group-directories-first' # my preferred listing
 alias la='exa -a --color=always --group-directories-first'  # all files and dirs
@@ -47,6 +44,10 @@ alias edit_aliases='${=EDITOR} ~/.zsh/aliasrc'
 alias awe='code $HOME/.config/awesome'
 alias kali='exec VBoxManage startvm kali'
 alias config='/usr/bin/git --git-dir=$HOME/dotfiles --work-tree=$HOME'
+alias remove_unused_dependencies='sudo pacman -Rns $(pacman -Qtdq)'
+
+alias glg="git log --graph --abbrev-commit --decorate --format=format:'%C(bold green)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold yellow)(%ar)%C(reset)%C(auto)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all"
+alias clg="config log --graph --abbrev-commit --decorate --format=format:'%C(bold green)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold yellow)(%ar)%C(reset)%C(auto)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all"
 
 # Function to show a markdown document in a browser
 # Requires grip (pip install grip)
