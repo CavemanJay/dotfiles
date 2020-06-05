@@ -1,3 +1,6 @@
+import os
+import subprocess
+
 from libqtile.config import Key, Screen, Group, Drag, Click
 from libqtile.lazy import lazy
 from libqtile import layout, bar, widget
@@ -6,6 +9,8 @@ from typing import List  # noqa: F401
 
 mod = "mod4"
 alt = "mod1"
+browser = "qutebrowser"
+terminal = "terminator"
 
 keys = [
     # Switch between windows in current stack pane
@@ -21,17 +26,12 @@ keys = [
 
     Key([mod], "f", lazy.window.toggle_fullscreen(),
         desc='Fullscreen current window'),
-    # Key(
-    #     [mod], "m",
-    #     lazy.window.fullscreen(),
-    #     desc='toggle window between minimum and maximum sizes'
-    # ),
-
 
     # Swap panes of split stack
     Key([mod, "shift"], "space", lazy.layout.rotate()),
 
-    Key([mod], "x", lazy.spawn("terminator"),
+    # Spawn terminal
+    Key([mod], "x", lazy.spawn(terminal),
         desc='Spawn the terminator terminal emulator'),
 
     # Toggle between different layouts as defined below
@@ -59,11 +59,25 @@ keys = [
         lazy.spawn("./.dmenu/dmenu-scrot.sh"),
         desc='Dmenu scrot script'
     ),
+    Key(
+        [alt, "control"], "w",
+        lazy.spawn("./.dmenu/dmenu-set-wallpaper.sh"),
+        desc='Dmenu wallpaper script'
+    ),
+    Key(
+        [alt, "control"], "m",
+        lazy.spawn("clipmenu"),
+        desc='Clipboard script'
+    ),
 
-
+    Key(
+        [alt, "control"], "s",
+        lazy.spawn("./scripts/wallpaper/safe_wallpaper.sh"),
+        desc='Dmenu wallpaper script'
+    ),
 ]
 
-groups = [Group(i) for i in "ab"]
+groups = [Group(i) for i in "abc"]
 
 for i in groups:
     keys.extend([
@@ -92,6 +106,7 @@ layouts = [
     # layout.TreeTab(),
     # layout.VerticalTile(),
     # layout.Zoomy(),
+    layout.Floating(),
 ]
 
 widget_defaults = dict(
@@ -155,6 +170,12 @@ floating_layout = layout.Floating(float_rules=[
 ])
 auto_fullscreen = True
 focus_on_window_activation = "smart"
+
+##### STARTUP APPLICATIONS #####
+@hook.subscribe.startup_once
+def start_once():
+    home = os.path.expanduser('~')
+    subprocess.call([home + '/.config/qtile/autostart.sh'])
 
 # XXX: Gasp! We're lying here. In fact, nobody really uses or cares about this
 # string besides java UI toolkits; you can see several discussions on the
