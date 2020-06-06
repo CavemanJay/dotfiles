@@ -2,10 +2,11 @@ import os
 import subprocess
 
 from keys import keys, mod, alt
+from layouts import *
 
 from libqtile.config import Key, Screen, Group, Drag, Click
 from libqtile.lazy import lazy
-from libqtile import layout, bar, widget, hook
+from libqtile import bar, widget, hook
 
 from typing import List  # noqa: F401
 
@@ -23,23 +24,6 @@ for i in groups:
         # # mod1 + shift + letter of group = move focused window to group
         # Key([mod, "shift"], i.name, lazy.window.togroup(i.name)),
     ])
-
-layouts = [
-    layout.Max(),
-    # layout.Stack(num_stacks=2),
-    # Try more layouts by unleashing below layouts.
-    # layout.Bsp(),
-    # layout.Columns(),
-    # layout.Matrix(),
-    layout.MonadTall(),
-    # layout.MonadWide(),
-    # layout.RatioTile(),
-    # layout.Tile(),
-    # layout.TreeTab(),
-    # layout.VerticalTile(),
-    # layout.Zoomy(),
-    # layout.Floating(),
-]
 
 widget_defaults = dict(
     # font='sans',
@@ -83,23 +67,6 @@ main = None
 follow_mouse_focus = True
 bring_front_click = False
 cursor_warp = False
-floating_layout = layout.Floating(float_rules=[
-    # Run the utility of `xprop` to see the wm class and name of an X client.
-    {'wmclass': 'confirm'},
-    {'wmclass': 'dialog'},
-    {'wmclass': 'download'},
-    {'wmclass': 'error'},
-    {'wmclass': 'file_progress'},
-    {'wmclass': 'notification'},
-    {'wmclass': 'splash'},
-    {'wmclass': 'toolbar'},
-    {'wmclass': 'confirmreset'},  # gitk
-    {'wmclass': 'makebranch'},  # gitk
-    {'wmclass': 'maketag'},  # gitk
-    {'wname': 'branchdialog'},  # gitk
-    {'wname': 'pinentry'},  # GPG key password entry
-    {'wmclass': 'ssh-askpass'},  # ssh-askpass
-])
 auto_fullscreen = True
 focus_on_window_activation = "smart"
 
