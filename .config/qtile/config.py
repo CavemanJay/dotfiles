@@ -51,17 +51,17 @@ keys = [
     # Dmenu scripts launched with ALT + CTRL + KEY
     Key(
         [alt, "control"], "e",
-        lazy.spawn("./.dmenu/dmenu-edit-configs.sh"),
+        lazy.spawn("./scripts/dmenu/dmenu-edit-configs.sh"),
         desc='Dmenu script for editing config files'
     ),
     Key(
         [alt, "control"], "i",
-        lazy.spawn("./.dmenu/dmenu-scrot.sh"),
+        lazy.spawn("./scripts/dmenu/dmenu-scrot.sh"),
         desc='Dmenu scrot script'
     ),
     Key(
         [alt, "control"], "w",
-        lazy.spawn("./.dmenu/dmenu-set-wallpaper.sh"),
+        lazy.spawn("./scripts/dmenu/dmenu-set-wallpaper.sh"),
         desc='Dmenu wallpaper script'
     ),
     Key(

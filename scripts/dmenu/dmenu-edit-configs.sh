@@ -1,11 +1,9 @@
 #!/bin/bash
-declare options=("awesome
-aliases
+declare options=("aliases
+awesome
 bash
-broot
 qtile
 qutebrowser
-vifm
 vim
 xresources
 zsh
@@ -51,4 +49,4 @@ case "$choice" in
 		exit 1
 	;;
 esac
-terminator -x code "$choice"
+alacritty -e code "$choice"
