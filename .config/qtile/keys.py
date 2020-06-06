@@ -1,4 +1,4 @@
-from libqtile.config import Key
+from libqtile.config import Key, Drag, Click
 from libqtile.lazy import lazy
 
 mod = "mod4"
@@ -99,3 +99,12 @@ def _script_keys():
 
 keys = _application_keys() + _window_keys() + _misc_keys() + \
     _script_keys() + _layout_keys()
+
+# Drag floating layouts.
+mouse = [
+    Drag([mod], "Button1", lazy.window.set_position_floating(),
+         start=lazy.window.get_position()),
+    Drag([mod], "Button3", lazy.window.set_size_floating(),
+         start=lazy.window.get_size()),
+    Click([mod], "Button2", lazy.window.bring_to_front())
+]

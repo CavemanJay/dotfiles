@@ -1,5 +1,6 @@
 import os
 import subprocess
+import socket
 
 from keys import keys, mod, alt
 from layouts import *
@@ -25,11 +26,23 @@ for i in groups:
         # Key([mod, "shift"], i.name, lazy.window.togroup(i.name)),
     ])
 
+##### COLORS #####
+colors = [["#282a36", "#282a36"],  # panel background
+          ["#434758", "#434758"],  # background for current screen tab
+          ["#ffffff", "#ffffff"],  # font color for group names
+          ["#ff5555", "#ff5555"],  # border line color for current tab
+          ["#8d62a9", "#8d62a9"],  # border line color for other tab and odd widgets
+          ["#668bd7", "#668bd7"],  # color for the even widgets
+          ["#e1acff", "#e1acff"]]  # window name
+
+##### PROMPT #####
+prompt = "{0}@{1}: ".format(os.environ["USER"], socket.gethostname())
+
 widget_defaults = dict(
-    # font='sans',
-    font="Ubuntu",
+    font="Ubuntu Mono",
     fontsize=22,
     padding=3,
+    #background=colors[2]
 )
 extension_defaults = widget_defaults.copy()
 
@@ -43,6 +56,7 @@ screens = [
                 widget.WindowName(),
                 widget.TextBox("default config", name="default"),
                 widget.Systray(),
+                widget.Net(interface='wlp59s0'),
                 widget.Clock(format='%Y-%m-%d %a %I:%M %p'),
                 widget.Battery(),
                 widget.QuickExit(),
@@ -52,14 +66,6 @@ screens = [
     ),
 ]
 
-# Drag floating layouts.
-mouse = [
-    Drag([mod], "Button1", lazy.window.set_position_floating(),
-         start=lazy.window.get_position()),
-    Drag([mod], "Button3", lazy.window.set_size_floating(),
-         start=lazy.window.get_size()),
-    Click([mod], "Button2", lazy.window.bring_to_front())
-]
 
 dgroups_key_binder = None
 dgroups_app_rules = []  # type: List
@@ -73,7 +79,7 @@ focus_on_window_activation = "smart"
 ##### STARTUP APPLICATIONS #####
 
 
-@hook.subscribe.startup_once
+@ hook.subscribe.startup_once
 def start_once():
     home = os.path.expanduser('~')
     subprocess.call([home + '/.config/qtile/autostart.sh'])
