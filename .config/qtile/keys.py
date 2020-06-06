@@ -12,7 +12,9 @@ def _application_keys():
     return [
         Key([mod], "x", lazy.spawn(terminal),
             desc='Spawn a terminal'),
-        Key([alt], "space", lazy.spawn("dmenu_run -p 'Run: '"),
+        Key([alt], "space", lazy.spawn("j4-dmenu-desktop --dmenu=\"dmenu -i -p 'Launch: '\" --term='alacritty'"),
+            desc='Show a dmenu application launcher prompt'),
+        Key([alt], "r", lazy.spawn("dmenu_run -i -p 'Run: '"),
             desc='Show a dmenu run prompt'),
         Key([mod], "b", lazy.spawn(browser),
             desc='Spawn a browser'),
@@ -57,8 +59,8 @@ def _layout_keys():
         Key([alt], "Tab", lazy.layout.next(),
             desc='Toggle through open windows'),
         # Switch between windows in current stack pane
-        Key([mod], "k", lazy.layout.down()),
-        Key([mod], "j", lazy.layout.up()),
+        Key([mod], "j", lazy.layout.down()),
+        Key([mod], "k", lazy.layout.up()),
 
         # Move windows up or down in current stack
         Key([mod, "control"], "k", lazy.layout.shuffle_down()),
