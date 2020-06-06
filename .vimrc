@@ -193,4 +193,8 @@ set lazyredraw
 set showmatch
 " set hlsearch
 
+" Run xrdb whenever Xdefaults or Xresources are updated.
+	autocmd BufWritePost *Xresources,*Xdefaults !xrdb %
 
+" Source the current file when editing vimrc or zshrc
+    autocmd BufWritePost *zshrc,*vimrc source %
