@@ -43,7 +43,7 @@ alias edit_aliases='${=EDITOR} ~/.zsh/aliasrc'
 
 alias awe='code $HOME/.config/awesome'
 alias kali='exec VBoxManage startvm kali'
-alias config='/usr/bin/git --git-dir=$HOME/dotfiles --work-tree=$HOME'
+alias config='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
 alias remove_unused_dependencies='sudo pacman -Rns $(pacman -Qtdq)'
 
 alias glg="git log --graph --abbrev-commit --decorate --format=format:'%C(bold green)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold yellow)(%ar)%C(reset)%C(auto)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all"
