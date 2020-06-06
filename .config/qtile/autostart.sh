@@ -1,4 +1,5 @@
 #!/bin/bash
+udiskie -A -t &
 picom &
 clipmenud &
-udiskie -A -t &
+nm-applet &
