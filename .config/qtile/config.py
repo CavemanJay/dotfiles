@@ -3,14 +3,14 @@ import subprocess
 
 from libqtile.config import Key, Screen, Group, Drag, Click
 from libqtile.lazy import lazy
-from libqtile import layout, bar, widget
+from libqtile import layout, bar, widget, hook
 
 from typing import List  # noqa: F401
 
 mod = "mod4"
 alt = "mod1"
 browser = "qutebrowser"
-terminal = "terminator"
+terminal = "alacritty"
 
 keys = [
     # Switch between windows in current stack pane
@@ -66,7 +66,7 @@ keys = [
     ),
     Key(
         [alt, "control"], "m",
-        lazy.spawn("clipmenu"),
+        lazy.spawn("clipmenu -c"),
         desc='Clipboard script'
     ),
 
@@ -106,7 +106,7 @@ layouts = [
     # layout.TreeTab(),
     # layout.VerticalTile(),
     # layout.Zoomy(),
-    layout.Floating(),
+    # layout.Floating(),
 ]
 
 widget_defaults = dict(
