@@ -2,7 +2,7 @@ from libqtile import layout
 
 ##### DEFAULT THEME SETTINGS FOR LAYOUTS #####
 layout_theme = {"border_width": 2,
-                "margin": 6,
+                "margin": 15,
                 "border_focus": "e1acff",
                 "border_normal": "1D2330"
                 }

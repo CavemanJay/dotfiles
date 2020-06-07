@@ -10,8 +10,8 @@ from libqtile import bar, widget, hook
 prompt = "{0}@{1}: ".format(os.environ["USER"], socket.gethostname())
 
 
-def init_widgets_list():
-    widgets_list = [
+def init_top_bar_widgets():
+    return [
         widget.Sep(
             linewidth=0,
             padding=6,
@@ -55,83 +55,53 @@ def init_widgets_list():
             background=colors[0],
             padding=0
         ),
-        # widget.TextBox(
-        #     # text='',
-        #     background=colors[0],
-        #     foreground=colors[4],
-        #     padding=0,
-        #     fontsize=37
-        # ),
-        # widget.TextBox(
-        #     # text='',
-        #     background=colors[4],
-        #     foreground=colors[5],
-        #     padding=0,
-        #     fontsize=37
-        # ),
         widget.TextBox(
             text=" 🌡",
             padding=2,
             foreground=colors[2],
-            background=colors[5],
+            background=colors[4],
             fontsize=25
         ),
         widget.ThermalSensor(
             foreground=colors[2],
-            background=colors[5],
+            background=colors[4],
             padding=5
-        ),
-        widget.TextBox(
-            # text='',
-            background=colors[5],
-            foreground=colors[4],
-            padding=0,
-            fontsize=37
         ),
         widget.TextBox(
             text=" ⟳",
             padding=2,
             foreground=colors[2],
-            background=colors[4],
+            background=colors[5],
             fontsize=30
         ),
         widget.Pacman(
             execute="alacritty",
-            update_interval=1800,
+            update_interval=60,
             foreground=colors[2],
-            background=colors[4]
+            background=colors[5]
         ),
         widget.TextBox(
             text="Updates",
             padding=5,
             foreground=colors[2],
-            background=colors[4]
-        ),
-        widget.TextBox(
-            # text='',
-            background=colors[4],
-            foreground=colors[5],
-            padding=0,
-            fontsize=37
+            background=colors[5]
         ),
         widget.TextBox(
             text=" 🖬",
             foreground=colors[2],
-            background=colors[5],
+            background=colors[4],
             padding=0,
             fontsize=30
         ),
         widget.Memory(
             foreground=colors[2],
-            background=colors[5],
+            background=colors[4],
             padding=5
         ),
-        widget.TextBox(
-            # text='',
+        widget.CPU(
+            foreground=colors[2],
             background=colors[5],
-            foreground=colors[4],
-            padding=0,
-            fontsize=37
+            padding=5
         ),
         widget.Net(
             interface="wlp59s0",
@@ -141,30 +111,35 @@ def init_widgets_list():
             padding=5
         ),
         widget.TextBox(
-            # text='',
+            text='|',
+            foreground=colors[2],
             background=colors[4],
-            foreground=colors[5],
             padding=0,
             fontsize=37
         ),
-        widget.TextBox(
-            text=" Vol:",
+        widget.Wlan(
+            interface="wlp59s0",
+            format="{essid} {percent:2.0%}",
             foreground=colors[2],
-            background=colors[5],
-            padding=0
-        ),
-        widget.Volume(
-            foreground=colors[2],
-            background=colors[5],
+            background=colors[4],
             padding=5
         ),
-        widget.TextBox(
-            # text='',
-            background=colors[5],
-            foreground=colors[4],
-            padding=0,
-            fontsize=37
+        # widget.Sep(
+        #     linewidth=0,
+        #     padding=10,
+        #     foreground=colors[0],
+        #     background=colors[5]
+        # ),
+        widget.Systray(
+            background=colors[3],
+            padding=10,
+            icon_size=40
         ),
+    ]
+
+
+def init_bottom_bar_widgets():
+    return [
         widget.CurrentLayoutIcon(
             custom_icon_paths=[os.path.expanduser("~/.config/qtile/icons")],
             foreground=colors[0],
@@ -177,31 +152,51 @@ def init_widgets_list():
             background=colors[4],
             padding=5
         ),
+        widget.Spacer(),
+        widget.CPUGraph(
+            # background=colors[5]
+            graph_color=colors[5][0],
+            
+        ),
         widget.TextBox(
-            # text='',
+            text=" Brightness:",
+            foreground=colors[2],
+            background=colors[5],
+            padding=0
+        ),
+        widget.Backlight(
+            change_command='sudo xbacklight -set {0}',
+            backlight_name='intel_backlight',
+            foreground=colors[2],
+            background=colors[5]
+        ),
+        widget.TextBox(
+            text=" Vol:",
+            foreground=colors[2],
             background=colors[4],
-            foreground=colors[5],
-            padding=0,
-            fontsize=37
+            padding=0
+        ),
+        widget.Volume(
+            foreground=colors[2],
+            background=colors[4],
+            padding=5
+        ),
+        widget.Battery(
+            padding=2,
+            foreground=colors[2],
+            background=colors[5],
+            show_short_text=False,
+            charge_char='⚡',
+            full_char='',
+            discharge_char='↓',
+            low_percentage=.2
         ),
         widget.Clock(
             foreground=colors[2],
-            background=colors[5],
-            format="%A, %B %d  [ %H:%M ]"
-        ),
-        widget.Sep(
-            linewidth=0,
-            padding=10,
-            foreground=colors[0],
-            background=colors[5]
-        ),
-        widget.Systray(
-            background=colors[0],
-            padding=10,
-            icon_size=40
-        ),
+            background=colors[4],
+            format=" %A, %B %d  [ %I:%M %p ]"
+        )
     ]
-    return widgets_list
 
 
 ##### COLORS #####
@@ -209,9 +204,17 @@ colors = [["#282a36", "#282a36"],  # panel background
           ["#434758", "#434758"],  # background for current screen tab
           ["#ffffff", "#ffffff"],  # font color for group names
           ["#ff5555", "#ff5555"],  # border line color for current tab
-          ["#8d62a9", "#8d62a9"],  # border line color for other tab and odd widgets
-          ["#668bd7", "#668bd7"],  # color for the even widgets
+          ["#000000", "#000000"],  # border line color for other tab and odd widgets
+          ["#ff3333", "#ff3333"],  # color for the even widgets
           ["#e1acff", "#e1acff"]]  # window name
+
+#colors = [["#282a36", "#282a36"],  # panel background
+ #         ["#434758", "#434758"],  # background for current screen tab
+  #        ["#ffffff", "#ffffff"],  # font color for group names
+   #       ["#ff5555", "#ff5555"],  # border line color for current tab
+    #      ["#8d62a9", "#8d62a9"],  # border line color for other tab and odd widgets
+     #     ["#668bd7", "#668bd7"],  # color for the even widgets
+      #    ["#e1acff", "#e1acff"]]  # window name
 
 
 widget_defaults = dict(
@@ -240,5 +243,9 @@ screens = [
     #         24,
     #     ),
     # ),
-    Screen(top=bar.Bar(widgets=init_widgets_list(), opacity=0.85, size=55))
+    Screen(
+        top=bar.Bar(widgets=init_top_bar_widgets(), opacity=0.85, size=55),
+        bottom=bar.Bar(widgets=init_bottom_bar_widgets(),
+                       opacity=0.85, size=65),
+    )
 ]

@@ -12,21 +12,35 @@ from libqtile import bar, widget, hook
 
 from typing import List  # noqa: F401
 
-groups = [Group(i) for i in "abc"]
+##### GROUPS #####
 
-for i in groups:
+group_names = ["WWW",
+               "DEV",
+               "SYS",
+               "VBOX",
+               "MUS",
+               "MISC"]
+
+# groups = [Group(i) for i in "abc"]
+groups = [Group(name) for name in group_names]
+
+for i, name in enumerate(group_names, 1):
     keys.extend([
+        # Switch to another group
+        Key([mod], str(i), lazy.group[name].toscreen()),
+        # Send current window to another group
+        Key([mod, "shift"], str(i), lazy.window.togroup(name), switch_group=False)
+
         # mod1 + letter of group = switch to group
-        Key([mod], i.name, lazy.group[i.name].toscreen()),
+        # Key([mod], i.name, lazy.group[i.name].toscreen()),
 
         # mod1 + shift + letter of group = switch to & move focused window to group
-        Key([mod, "shift"], i.name, lazy.window.togroup(
-            i.name, switch_group=True)),
+        # Key([mod, "shift"], i.name, lazy.window.togroup(
+        #     i.name, switch_group=True)),
         # Or, use below if you prefer not to switch to that group.
         # # mod1 + shift + letter of group = move focused window to group
         # Key([mod, "shift"], i.name, lazy.window.togroup(i.name)),
     ])
-
 
 
 dgroups_key_binder = None

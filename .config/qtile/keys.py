@@ -58,13 +58,23 @@ def _layout_keys():
         # Switch windows
         Key([alt], "Tab", lazy.layout.next(),
             desc='Toggle through open windows'),
+
         # Switch between windows in current stack pane
-        Key([mod], "j", lazy.layout.down()),
-        Key([mod], "k", lazy.layout.up()),
+        Key([mod], "j", lazy.layout.down(),
+            desc="Move down the windows in current layout"),
+        Key([mod], "k", lazy.layout.up(),
+            desc="Move up the windows in current layout"),
 
         # Move windows up or down in current stack
-        Key([mod, "control"], "k", lazy.layout.shuffle_down()),
-        Key([mod, "control"], "j", lazy.layout.shuffle_up()),
+        Key([mod, "control"], "k",
+            lazy.layout.shuffle_down()),
+        Key([mod, "control"], "j",
+            lazy.layout.shuffle_up()),
+
+        Key([mod, "shift"], "k",
+            lazy.layout.section_up()),
+        Key([mod, "shift"], "j",
+            lazy.layout.section_down()),
     ]
 
 
