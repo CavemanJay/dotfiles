@@ -97,6 +97,11 @@ def _script_keys():
             desc='Dmenu wallpaper script'
         ),
         Key(
+            [alt, "control"], "v",
+            lazy.spawn("./scripts/dmenu/dmenu-show-vms.sh"),
+            desc='Launch an available virtual machine'
+        ),
+        Key(
             [alt, "control"], "m",
             lazy.spawn("clipmenu -c"),
             desc='Clipboard script'

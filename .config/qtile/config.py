@@ -15,7 +15,7 @@ from typing import List  # noqa: F401
 ##### GROUPS #####
 
 group_names = ["WWW",
-               "DEV",
+               "CODE",
                "SYS",
                "VBOX",
                "MUS",

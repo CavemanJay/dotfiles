@@ -135,6 +135,12 @@ def init_top_bar_widgets():
             padding=10,
             icon_size=40
         ),
+        widget.Sep(
+            linewidth=0,
+            padding=10,
+            foreground=colors[0],
+            background=colors[3]
+        )
     ]
 
 
@@ -156,22 +162,17 @@ def init_bottom_bar_widgets():
         widget.CPUGraph(
             # background=colors[5]
             graph_color=colors[5][0],
-            
-        ),
-        widget.TextBox(
-            text=" Brightness:",
-            foreground=colors[2],
-            background=colors[5],
-            padding=0
+
         ),
         widget.Backlight(
             change_command='sudo xbacklight -set {0}',
             backlight_name='intel_backlight',
             foreground=colors[2],
-            background=colors[5]
+            background=colors[5],
+            format='Brightness: {percent: 2.0%}'
         ),
         widget.TextBox(
-            text=" Vol:",
+            text=" Volume:",
             foreground=colors[2],
             background=colors[4],
             padding=0
@@ -179,7 +180,7 @@ def init_bottom_bar_widgets():
         widget.Volume(
             foreground=colors[2],
             background=colors[4],
-            padding=5
+            padding=5,
         ),
         widget.Battery(
             padding=2,
@@ -208,13 +209,13 @@ colors = [["#282a36", "#282a36"],  # panel background
           ["#ff3333", "#ff3333"],  # color for the even widgets
           ["#e1acff", "#e1acff"]]  # window name
 
-#colors = [["#282a36", "#282a36"],  # panel background
- #         ["#434758", "#434758"],  # background for current screen tab
-  #        ["#ffffff", "#ffffff"],  # font color for group names
-   #       ["#ff5555", "#ff5555"],  # border line color for current tab
-    #      ["#8d62a9", "#8d62a9"],  # border line color for other tab and odd widgets
-     #     ["#668bd7", "#668bd7"],  # color for the even widgets
-      #    ["#e1acff", "#e1acff"]]  # window name
+# colors = [["#282a36", "#282a36"],  # panel background
+#         ["#434758", "#434758"],  # background for current screen tab
+#        ["#ffffff", "#ffffff"],  # font color for group names
+#       ["#ff5555", "#ff5555"],  # border line color for current tab
+#      ["#8d62a9", "#8d62a9"],  # border line color for other tab and odd widgets
+#     ["#668bd7", "#668bd7"],  # color for the even widgets
+#    ["#e1acff", "#e1acff"]]  # window name
 
 
 widget_defaults = dict(
