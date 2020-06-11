@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/bash
 
 root='/usr/share/backgrounds'
 FOLDER=$(ls $root | shuf -n 1)

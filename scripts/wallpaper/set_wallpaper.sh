@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/bash
 
 FOLDER=$(cat /home/jaydlc/scripts/wallpaper/current)
 WALLPAPER=$(ls "$FOLDER" | shuf -n 1)
