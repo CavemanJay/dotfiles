@@ -6,7 +6,7 @@ from keys import keys, mod, alt
 from layouts import *
 from appearance import *
 
-from libqtile.config import Key, Screen, Group, Drag, Click
+from libqtile.config import Key, Screen, Group, Drag, Click, Match, ScratchPad, DropDown
 from libqtile.lazy import lazy
 from libqtile import bar, widget, hook
 
@@ -14,22 +14,33 @@ from typing import List  # noqa: F401
 
 ##### GROUPS #####
 
-group_names = ["WWW",
-               "CODE",
-               "SYS",
-               "VBOX",
-               "MUS",
-               "MISC"]
+groups = [
+    Group("WWW", matches=[
+        Match(wm_class='Navigator'),
+        Match(wm_class='firefox'),
+    ]),
+    Group("CODE", matches=[
+        Match(wm_class='code-oss')
+    ]),
+    Group("SYS"),
+    Group("VBOX"),
+    Group("MUS"),
+    Group("MISC"),
+    ScratchPad("scratchpad", [
+        DropDown('term', 'alacritty',  y=0.1,height=0.85),
+        DropDown('cmus', 'alacritty -e cmus',  y=0.1,height=0.85),
+    ])]
 
 # groups = [Group(i) for i in "abc"]
-groups = [Group(name) for name in group_names]
+# groups = [Group(name) for name in group_names]
 
-for i, name in enumerate(group_names, 1):
+for i, group in enumerate(groups, 1):
     keys.extend([
         # Switch to another group
-        Key([mod], str(i), lazy.group[name].toscreen()),
+        Key([mod], str(i), lazy.group[group.name].toscreen()),
         # Send current window to another group
-        Key([mod, "shift"], str(i), lazy.window.togroup(name), switch_group=False)
+        Key([mod, "shift"], str(i), lazy.window.togroup(
+            group.name), switch_group=False)
 
         # mod1 + letter of group = switch to group
         # Key([mod], i.name, lazy.group[i.name].toscreen()),

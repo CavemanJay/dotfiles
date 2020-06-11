@@ -120,13 +120,20 @@ def _script_keys():
                 fontsize=12,
                 dmenu_command='dmenu -c'
             )),
-            desc=''
+            desc='Dmenu show active windows and select the chosen one'
         )
     ]
 
 
+def _scratchpad_keys():
+    return [
+        Key([mod,'shift'], 'x', lazy.group['scratchpad'].dropdown_toggle('term')),
+        Key([mod,'shift'], 'c', lazy.group['scratchpad'].dropdown_toggle('cmus'))
+    ]
+
+
 keys = _application_keys() + _window_keys() + _misc_keys() + \
-    _script_keys() + _layout_keys()
+    _script_keys() + _layout_keys() + _scratchpad_keys()
 
 # Drag floating layouts.
 mouse = [

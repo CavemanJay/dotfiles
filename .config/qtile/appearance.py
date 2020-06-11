@@ -180,6 +180,9 @@ def init_bottom_bar_widgets():
             update_interval=20,
             foreground=colors[2],
             background=colors[5],
+            mouse_callbacks={
+                'Button1': functions.wallpaper_folder_clicked
+            }
         ),
         widget.Spacer(),
         widget.Backlight(

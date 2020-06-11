@@ -1,4 +1,5 @@
 import os
+from notify import notification
 
 
 def get_current_wallpaper_folder():
@@ -8,6 +9,9 @@ def get_current_wallpaper_folder():
     return folder
 
 
+def wallpaper_folder_clicked(qtile):
+    pass
+
+
 if __name__ == "__main__":
-    folder = get_current_wallpaper_folder()
-    print(folder)
+    notification('body', "title")
