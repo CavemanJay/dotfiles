@@ -5,6 +5,7 @@ from libqtile.config import Key, Screen, Group, Drag, Click
 from libqtile.lazy import lazy
 from libqtile import bar, widget, hook
 
+import functions
 
 ##### PROMPT #####
 prompt = "{0}@{1}: ".format(os.environ["USER"], socket.gethostname())
@@ -98,10 +99,22 @@ def init_top_bar_widgets():
             background=colors[4],
             padding=5
         ),
+        widget.MemoryGraph(
+            graph_color="FFFFFF"
+        ),
+        widget.Sep(
+            linewidth=0,
+            padding=5
+        ),
         widget.CPU(
             foreground=colors[2],
             background=colors[5],
             padding=5
+        ),
+        widget.CPUGraph(
+            background=colors[5],
+            # graph_color=colors[5][0],
+            graph_color="FFFFFF"
         ),
         widget.Net(
             interface="wlp59s0",
@@ -123,6 +136,10 @@ def init_top_bar_widgets():
             foreground=colors[2],
             background=colors[4],
             padding=5
+        ),
+        widget.NetGraph(
+            interface="wlp59s0",
+            graph_color="FFFFFF"
         ),
         # widget.Sep(
         #     linewidth=0,
@@ -158,12 +175,13 @@ def init_bottom_bar_widgets():
             background=colors[4],
             padding=5
         ),
-        widget.Spacer(),
-        widget.CPUGraph(
-            # background=colors[5]
-            graph_color=colors[5][0],
-
+        widget.GenPollText(
+            func=functions.get_current_wallpaper_folder,
+            update_interval=20,
+            foreground=colors[2],
+            background=colors[5],
         ),
+        widget.Spacer(),
         widget.Backlight(
             change_command='sudo xbacklight -set {0}',
             backlight_name='intel_backlight',
@@ -183,7 +201,7 @@ def init_bottom_bar_widgets():
             padding=5,
         ),
         widget.Battery(
-            padding=2,
+            padding=5,
             foreground=colors[2],
             background=colors[5],
             show_short_text=False,
@@ -195,7 +213,12 @@ def init_bottom_bar_widgets():
         widget.Clock(
             foreground=colors[2],
             background=colors[4],
-            format=" %A, %B %d  [ %I:%M %p ]"
+            format=" %A, %B %d  [ %I:%M %p ]",
+            padding=5
+        ),
+        widget.QuickExit(
+            background=colors[5],
+            padding=5
         )
     ]
 
