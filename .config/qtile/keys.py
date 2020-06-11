@@ -1,5 +1,7 @@
 from libqtile.config import Key, Drag, Click
 from libqtile.lazy import lazy
+from libqtile.extension import window_list
+
 
 mod = "mod4"
 alt = "mod1"
@@ -110,6 +112,15 @@ def _script_keys():
             [alt, "control"], "s",
             lazy.spawn("./scripts/wallpaper/safe_wallpaper.sh"),
             desc='Dmenu wallpaper script'
+        ),
+        Key(
+            [alt, "control"], "space",
+            lazy.run_extension(window_list.WindowList(
+                dmenu_prompt='Change window: ',
+                fontsize=12,
+                dmenu_command='dmenu -c'
+            )),
+            desc=''
         )
     ]
 
