@@ -56,18 +56,18 @@ def init_top_bar_widgets():
             background=colors[0],
             padding=0
         ),
-        widget.TextBox(
-            text=" 🌡",
-            padding=2,
-            foreground=colors[2],
-            background=colors[5],
-            fontsize=25
-        ),
-        widget.ThermalSensor(
-            foreground=colors[2],
-            background=colors[5],
-            padding=5
-        ),
+        # widget.TextBox(
+        #     text=" 🌡",
+        #     padding=2,
+        #     foreground=colors[2],
+        #     background=colors[5],
+        #     fontsize=25
+        # ),
+        # widget.ThermalSensor(
+        #     foreground=colors[2],
+        #     background=colors[5],
+        #     padding=5
+        # ),
         # widget.TextBox(
         #     text=" ⟳",
         #     padding=2,
@@ -117,7 +117,7 @@ def init_top_bar_widgets():
             graph_color="FFFFFF"
         ),
         widget.Net(
-            interface="wlp59s0",
+            interface="enp0s3",
             format='{down} ↓↑ {up}',
             foreground=colors[2],
             background=colors[4],
@@ -131,14 +131,14 @@ def init_top_bar_widgets():
             fontsize=37
         ),
         widget.Wlan(
-            interface="wlp59s0",
+            interface="enp0s3",
             format="{essid} {percent:2.0%}",
             foreground=colors[2],
             background=colors[4],
             padding=5
         ),
         widget.NetGraph(
-            interface="wlp59s0",
+            interface="enp0s3",
             graph_color="FFFFFF"
         ),
         # widget.Sep(
