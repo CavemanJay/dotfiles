@@ -60,33 +60,33 @@ def init_top_bar_widgets():
             text=" 🌡",
             padding=2,
             foreground=colors[2],
-            background=colors[4],
+            background=colors[5],
             fontsize=25
         ),
         widget.ThermalSensor(
             foreground=colors[2],
-            background=colors[4],
+            background=colors[5],
             padding=5
         ),
-        widget.TextBox(
-            text=" ⟳",
-            padding=2,
-            foreground=colors[2],
-            background=colors[5],
-            fontsize=30
-        ),
-        widget.Pacman(
-            execute="alacritty",
-            update_interval=60,
-            foreground=colors[2],
-            background=colors[5]
-        ),
-        widget.TextBox(
-            text="Updates",
-            padding=5,
-            foreground=colors[2],
-            background=colors[5]
-        ),
+        # widget.TextBox(
+        #     text=" ⟳",
+        #     padding=2,
+        #     foreground=colors[2],
+        #     background=colors[5],
+        #     fontsize=30
+        # ),
+        # widget.Pacman(
+        #     execute="alacritty",
+        #     update_interval=30,
+        #     foreground=colors[2],
+        #     background=colors[5]
+        # ),
+        # widget.TextBox(
+        #     text="Updates",
+        #     padding=5,
+        #     foreground=colors[2],
+        #     background=colors[5]
+        # ),
         widget.TextBox(
             text=" 🖬",
             foreground=colors[2],

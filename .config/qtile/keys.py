@@ -20,6 +20,8 @@ def _application_keys():
             desc='Show a dmenu run prompt'),
         Key([mod], "b", lazy.spawn(browser),
             desc='Spawn a browser'),
+        Key([mod], "e", lazy.spawn(f'{terminal} -e ranger'),
+            desc='Spawn a file browser'),
     ]
 
 
@@ -118,7 +120,7 @@ def _script_keys():
             lazy.run_extension(window_list.WindowList(
                 dmenu_prompt='Change window: ',
                 fontsize=12,
-                dmenu_command='dmenu -c'
+                dmenu_command='dmenu -c -i'
             )),
             desc='Dmenu show active windows and select the chosen one'
         )
@@ -127,8 +129,8 @@ def _script_keys():
 
 def _scratchpad_keys():
     return [
-        Key([mod,'shift'], 'x', lazy.group['scratchpad'].dropdown_toggle('term')),
-        Key([mod,'shift'], 'c', lazy.group['scratchpad'].dropdown_toggle('cmus'))
+        Key([mod, 'shift'], 'x', lazy.group['scratchpad'].dropdown_toggle('term')),
+        Key([mod, 'shift'], 'c', lazy.group['scratchpad'].dropdown_toggle('cmus'))
     ]
 
 

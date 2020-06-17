@@ -15,20 +15,15 @@ from typing import List  # noqa: F401
 ##### GROUPS #####
 
 groups = [
-    Group("WWW", matches=[
-        Match(wm_class='Navigator'),
-        Match(wm_class='firefox'),
-    ]),
-    Group("CODE", matches=[
-        Match(wm_class='code-oss')
-    ]),
+    Group("WWW"),
+    Group("CODE"),
     Group("SYS"),
     Group("VBOX"),
     Group("MUS"),
     Group("MISC"),
     ScratchPad("scratchpad", [
-        DropDown('term', 'alacritty',  y=0.1,height=0.85),
-        DropDown('cmus', 'alacritty -e cmus',  y=0.1,height=0.85),
+        DropDown('term', 'alacritty', y=0.05, height=0.85),
+        DropDown('cmus', 'alacritty -e cmus', y=0.1, height=0.85),
     ])]
 
 # groups = [Group(i) for i in "abc"]

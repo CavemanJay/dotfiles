@@ -2,8 +2,9 @@
 udiskie -A -t &
 picom &
 clipmenud &
-nm-applet &
 pa-applet &
+# nm-applet &
+$HOME/scripts/wallpaper/wallpaper_timer.sh &
 xfce4-power-manager &
 # /usr/lib/mate-polkit/polkit-mate-authentication-agent-1 & 
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
