@@ -49,4 +49,4 @@ case "$choice" in
 		exit 1
 	;;
 esac
-alacritty -e code "$choice"
+code "$choice"
