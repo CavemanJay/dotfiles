@@ -26,6 +26,7 @@ HISTFILE=~/.cache/zsh/history
 # Basic auto/tab complete:
 autoload -U compinit
 zstyle ':completion:*' menu select
+zstyle ':completion:*' completer _expand_alias _complete _ignored
 zmodload zsh/complist
 compinit
 _comp_options+=(globdots)               # Include hidden files.
@@ -55,9 +56,10 @@ source /usr/share/doc/pkgfile/command-not-found.zsh # Enable command not found
 #[[ -s /home/jay/.autojump/etc/profile.d/autojump.sh ]] && source /home/jay/.autojump/etc/profile.d/autojump.sh
 
 export PATH="$PATH:$HOME/.vim/bundle/vim-superman/bin"
+export PATH="$PATH:$HOME/.vim/bundle/vim-live-latex-preview/bin"
+export PATH="$PATH:$HOME/.nvm/versions/node/v14.4.0/bin/"
 compdef vman="man"
 
-eval $(gh completion -s zsh)
 eval $(thefuck --alias)
 
 neofetch
