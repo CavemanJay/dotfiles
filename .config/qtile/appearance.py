@@ -20,7 +20,7 @@ def init_top_bar_widgets():
             background=colors[0]
         ),
         widget.GroupBox(font="Ubuntu Bold",
-                        fontsize=24,
+                        fontsize=12,
                         margin_y=3,
                         margin_x=0,
                         padding_y=5,
@@ -61,7 +61,7 @@ def init_top_bar_widgets():
             padding=2,
             foreground=colors[2],
             background=colors[5],
-            fontsize=25
+            fontsize=14
         ),
         widget.ThermalSensor(
             foreground=colors[2],
@@ -92,7 +92,7 @@ def init_top_bar_widgets():
             foreground=colors[2],
             background=colors[4],
             padding=0,
-            fontsize=30
+            fontsize=15
         ),
         widget.Memory(
             foreground=colors[2],
@@ -117,7 +117,7 @@ def init_top_bar_widgets():
             graph_color="FFFFFF"
         ),
         widget.Net(
-            interface="wlp59s0",
+            interface="wlo1",
             format='{down} ↓↑ {up}',
             foreground=colors[2],
             background=colors[4],
@@ -128,17 +128,17 @@ def init_top_bar_widgets():
             foreground=colors[2],
             background=colors[4],
             padding=0,
-            fontsize=37
+            fontsize=20
         ),
         widget.Wlan(
-            interface="wlp59s0",
+            interface="wlo1",
             format="{essid} {percent:2.0%}",
             foreground=colors[2],
             background=colors[4],
             padding=5
         ),
         widget.NetGraph(
-            interface="wlp59s0",
+            interface="wlo1",
             graph_color="FFFFFF"
         ),
         # widget.Sep(
@@ -150,7 +150,7 @@ def init_top_bar_widgets():
         widget.Systray(
             background=colors[3],
             padding=10,
-            icon_size=40
+            icon_size=20
         ),
         widget.Sep(
             linewidth=0,
@@ -187,7 +187,7 @@ def init_bottom_bar_widgets():
         widget.Spacer(),
         widget.Backlight(
             change_command='sudo xbacklight -set {0}',
-            backlight_name='intel_backlight',
+            backlight_name='radeon_bl0',
             foreground=colors[2],
             background=colors[5],
             format='Brightness: {percent: 2.0%}'
@@ -246,7 +246,7 @@ colors = [["#282a36", "#282a36"],  # panel background
 
 widget_defaults = dict(
     font="Ubuntu Mono",
-    fontsize=30,
+    fontsize=12,
     padding=3,
     # background=colors[2]
 )
@@ -271,8 +271,8 @@ screens = [
     #     ),
     # ),
     Screen(
-        top=bar.Bar(widgets=init_top_bar_widgets(), opacity=0.85, size=55),
+        top=bar.Bar(widgets=init_top_bar_widgets(), opacity=0.85, size=30),
         bottom=bar.Bar(widgets=init_bottom_bar_widgets(),
-                       opacity=0.85, size=65),
+                       opacity=0.85, size=30),
     )
 ]
