@@ -58,8 +58,9 @@ source /usr/share/doc/pkgfile/command-not-found.zsh # Enable command not found
 export PATH="$PATH:$HOME/.vim/bundle/vim-superman/bin"
 export PATH="$PATH:$HOME/.vim/bundle/vim-live-latex-preview/bin"
 export PATH="$PATH:$HOME/.nvm/versions/node/v14.4.0/bin/"
+
 compdef vman="man"
 
 eval $(thefuck --alias)
 
-neofetch
+#neofetch
