@@ -22,12 +22,12 @@ alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 config checkout
 ```
 
+   * If the initial checkout fails delete or backup the existing files and then rerun `config checkout`
+
 5. Get the pure zsh theme
 ```
 git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh/pure"
 ```
-
-   * If the initial checkout fails delete or backup the existing files and then rerun `config checkout`
 
 6. Set the local repo to not show untracked files 
 ```
