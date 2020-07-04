@@ -60,13 +60,32 @@ def init_top_bar_widgets():
             text=" 🌡",
             padding=2,
             foreground=colors[2],
-            background=colors[5],
+            background=colors[4],
             fontsize=25
         ),
         widget.ThermalSensor(
             foreground=colors[2],
-            background=colors[5],
+            background=colors[4],
             padding=5
+        ),
+        widget.TextBox(
+            text="Disk:",
+            foreground=colors[2],
+            background=colors[5],
+        ),
+        widget.GenPollText(
+            func=functions.get_disk_usage,
+            update_interval=200,
+            foreground=colors[2],
+            background=colors[5],
+            # mouse_callbacks={
+            #     'Button1': functions.wallpaper_folder_clicked
+            # }
+        ),
+        widget.HDDGraph(
+            background=colors[5],
+            # graph_color=colors[5][0],
+            graph_color="FFFFFF"
         ),
         # widget.TextBox(
         #     text=" ⟳",

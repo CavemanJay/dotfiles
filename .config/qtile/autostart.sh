@@ -1,6 +1,6 @@
 #!/bin/bash
 udiskie -A -t &
-picom &
+picom --log-file $HOME/.picom.log &
 clipmenud &
 pa-applet &
 # nm-applet &
