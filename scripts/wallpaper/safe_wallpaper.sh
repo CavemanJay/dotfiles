@@ -1,8 +1,7 @@
 #!/bin/bash
 
-root='/usr/share/backgrounds'
-FOLDER=$(ls $root | shuf -n 1)
-WALLPAPER=$(ls "$root/$FOLDER" | shuf -n 1)
-WALLPAPER=$(locate $WALLPAPER | grep -v ".cache" | head -n 1)
-feh --bg-fill "$WALLPAPER"
-echo $(dirname "$WALLPAPER") > $HOME/scripts/wallpaper/current
+root="$HOME/Pictures/wallpapers"
+WALLPAPER=$(ls $root | shuf -n 1)
+feh --bg-fill "$root/$WALLPAPER"
+echo "$WALLPAPER" > $HOME/scripts/wallpaper/current
+echo 1 > $HOME/scripts/wallpaper/safemode
