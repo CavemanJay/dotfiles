@@ -6,8 +6,8 @@ from libqtile.extension import window_list
 mod = "mod4"
 alt = "mod1"
 
-browser = "qutebrowser"
-terminal = "alacritty"
+browser = "firefox"
+terminal = "st"
 
 
 def _application_keys():

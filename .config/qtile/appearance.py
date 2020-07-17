@@ -185,13 +185,13 @@ def init_bottom_bar_widgets():
             }
         ),
         widget.Spacer(),
-        widget.Backlight(
-            change_command='sudo xbacklight -set {0}',
-            backlight_name='intel_backlight',
-            foreground=colors[2],
-            background=colors[5],
-            format='Brightness: {percent: 2.0%}'
-        ),
+        # widget.Backlight(
+        #     change_command='sudo xbacklight -set {0}',
+        #     backlight_name='intel_backlight',
+        #     foreground=colors[2],
+        #     background=colors[5],
+        #     format='Brightness: {percent: 2.0%}'
+        # ),
         widget.TextBox(
             text=" Volume:",
             foreground=colors[2],
