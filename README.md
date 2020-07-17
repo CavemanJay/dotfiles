@@ -24,6 +24,11 @@ config checkout
 
    * If the initial checkout fails delete or backup the existing files and then rerun `config checkout`
 
+5. Get the pure zsh theme
+```
+git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh/pure"
+```
+
 6. Set the local repo to not show untracked files 
 ```
 config config --local status.showUntrackedFiles no
@@ -38,3 +43,5 @@ source $HOME/.zshrc
 ```
 rm $HOME/.gitignore
 ```
+
+9. Change default shell to zsh

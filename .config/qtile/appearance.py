@@ -138,7 +138,7 @@ def init_top_bar_widgets():
             padding=5
         ),
         widget.NetGraph(
-            interface="enp0s3",
+           interface="enp0s3",
             graph_color="FFFFFF"
         ),
         # widget.Sep(

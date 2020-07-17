@@ -14,7 +14,7 @@ def _application_keys():
     return [
         Key([mod], "x", lazy.spawn(terminal),
             desc='Spawn a terminal'),
-        Key([alt], "space", lazy.spawn("j4-dmenu-desktop --dmenu=\"dmenu -i -p 'Launch: '\" --term='alacritty'"),
+        Key([alt], "space", lazy.spawn("j4-dmenu-desktop --no-generic --dmenu=\"dmenu -i -p 'Launch: '\" --term='alacritty'"),
             desc='Show a dmenu application launcher prompt'),
         Key([alt], "r", lazy.spawn("dmenu_run -i -p 'Run: '"),
             desc='Show a dmenu run prompt'),
@@ -43,6 +43,8 @@ def _misc_keys():
             desc='Restart qtile'),
         Key([mod, "control"], "q", lazy.shutdown(),
             desc='Shutdown qtile'),
+        Key([mod ], "l", lazy.spawn('i3lock'),
+            desc='Lock the computer'),
     ]
 
 
