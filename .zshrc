@@ -28,7 +28,7 @@ autoload -U compinit
 zstyle ':completion:*' menu select
 zstyle ':completion:*' completer _expand_alias _complete _ignored
 zmodload zsh/complist
-compinit
+compinit -d ~/.cache/zsh/zcompdump
 _comp_options+=(globdots)               # Include hidden files.
 
 # vi mode
@@ -41,6 +41,9 @@ bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
 bindkey -v '^?' backward-delete-char
+bindkey '^R' history-incremental-search-backward
+autoload edit-command-line; zle -N edit-command-line
+bindkey '^E' edit-command-line
 
 # Load aliases and shortcuts if existent.
 [ -f "$HOME/.zsh/aliasrc" ] && source "$HOME/.zsh/aliasrc"
@@ -63,3 +66,7 @@ compdef vman="man"
 eval $(thefuck --alias)
 
 neofetch
+
+# tabtab source for electron-forge package
+# uninstall by removing these lines or running `tabtab uninstall electron-forge`
+[[ -f /home/jaydlc/.nvm/versions/node/v14.4.0/lib/node_modules/electron-forge/node_modules/tabtab/.completions/electron-forge.zsh ]] && . /home/jaydlc/.nvm/versions/node/v14.4.0/lib/node_modules/electron-forge/node_modules/tabtab/.completions/electron-forge.zsh

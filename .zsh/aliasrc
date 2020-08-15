@@ -4,6 +4,9 @@ alias la='exa -a --color=always --group-directories-first'  # all files and dirs
 alias ll='exa -l --color=always --group-directories-first'  # long format
 alias lt='exa -aT --color=always --group-directories-first' # tree listing
 
+alias grep='grep --color=always'
+alias sxiv='devour sxiv'
+
 function cd() { builtin cd -- "$@" && { [ "$PS1" = "" ] || la; }; }
 
 # # ex - archive extractor
@@ -33,6 +36,7 @@ ex ()
 export EDITOR=vim
 
 alias cls='clear'
+alias clip='xclip -sel clip'
 
 alias pacman-update='sudo pacman-mirrors --geoip'
 
@@ -44,7 +48,13 @@ alias edit_aliases='${=EDITOR} ~/.zsh/aliasrc'
 alias awe='code $HOME/.config/awesome'
 alias kali='exec VBoxManage startvm kali'
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
-alias remove_unused_dependencies='sudo pacman -Rns $(pacman -Qtdq)'
+alias open='xdg-open'
+alias remove_unused_dependencies='pacman -Qtdq && sudo pacman -Rns $(pacman -Qtdq)'
+
+[ -z "$NVM_DIR" ] && export NVM_DIR="$HOME/.nvm"
+source /usr/share/nvm/nvm.sh
+source /usr/share/nvm/bash_completion
+source /usr/share/nvm/install-nvm-exec
 
 alias glg="git log --graph --abbrev-commit --decorate --format=format:'%C(bold green)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold yellow)(%ar)%C(reset)%C(auto)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all"
 alias clg="config log --graph --abbrev-commit --decorate --format=format:'%C(bold green)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold yellow)(%ar)%C(reset)%C(auto)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all"
@@ -53,6 +63,5 @@ alias clg="config log --graph --abbrev-commit --decorate --format=format:'%C(bol
 # Requires grip (pip install grip)
 function md(){
     echo "Starting grip server"
-    grip -b --quiet 1>/dev/null $1 &
-    jobs
+    grip -b $1 
 }
