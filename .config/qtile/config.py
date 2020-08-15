@@ -19,7 +19,7 @@ groups = [
     Group("CODE"),
     Group("SYS"),
     Group("VBOX"),
-    Group("MUS"),
+    Group("MAIL"),
     Group("MISC"),
     ScratchPad("scratchpad", [
         DropDown('term', 'alacritty', y=0.05, height=0.85),
