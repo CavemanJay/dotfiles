@@ -4,7 +4,7 @@
 include "/home/jaydlc/.gtkrc-2.0.mine"
 gtk-theme-name="Matcha-dark-aliz"
 gtk-icon-theme-name="Papirus"
-gtk-font-name="DroidSansMono Nerd Font 12"
+gtk-font-name="Fira Code 13"
 gtk-cursor-theme-name="xcursor-breeze"
 gtk-cursor-theme-size=0
 gtk-toolbar-style=GTK_TOOLBAR_BOTH
