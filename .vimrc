@@ -4,6 +4,7 @@
 
 set nocompatible              " be iMproved, required
 filetype off                  " required
+set viminfo=%,<800,'10,/50,:100,h,f0,n~/.vim/cache/.viminfo
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -25,6 +26,7 @@ Plugin 'severin-lemaignan/vim-minimap'
 Plugin 'ap/vim-css-color'                           " Color previews for CSS
 Plugin 'tpope/vim-surround'                         " Change surrounding marks
 Plugin 'vim-superman'                               " Read man pages using vman command
+"Plugin 'ying17zi/vim-live-latex-preview'
 " Plugin 'jceb/vim-orgmode'
 
 call vundle#end()		" required, all plugins must appear before this line.
@@ -55,7 +57,7 @@ nnoremap k gk
 " highlight last inserted text
 nnoremap gV `[v`]
 
-let mapleader=","       " leader is comma
+"let mapleader=","       " leader is comma
 
 " toggle undotree
 nnoremap <leader>u :UndotreeToggle<CR>
@@ -191,6 +193,7 @@ set cursorline
 
 set lazyredraw
 set showmatch
+set autoread
 " set hlsearch
 
 " Run xrdb whenever Xdefaults or Xresources are updated.
