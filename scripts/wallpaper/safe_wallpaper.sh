@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 
 root="$HOME/Pictures/wallpapers"
 WALLPAPER=$(ls $root | shuf -n 1)

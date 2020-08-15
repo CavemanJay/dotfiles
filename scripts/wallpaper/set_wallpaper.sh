@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 
 safepaper() { 
     local WALLPAPER=$(ls -d $HOME/Pictures/wallpapers/* | shuf -n 1)
