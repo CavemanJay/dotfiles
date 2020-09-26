@@ -54,5 +54,6 @@ floating_layout = layout.Floating(float_rules=[
     {'wname': 'pinentry'},  # GPG key password entry
     {'wmclass': 'ssh-askpass'},  # ssh-askpass
     {'wmclass': 'microsoft teams - preview'},  # microsoft teams
+    {'wmclass': 'xdman-Main'},  
 ])
 
