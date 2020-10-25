@@ -19,13 +19,13 @@ git clone --bare https://github.com/JayCuevas/dotfiles.git $HOME/.dotfiles
 3. Update current shell scope to access the repo
 
 ```
-alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias cfg='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 ```
 
 4. Checkout the remote files
 
 ```
-config checkout
+cfg checkout
 ```
 
 - If the initial checkout fails delete or backup the existing files and then rerun `config checkout`
@@ -39,7 +39,7 @@ git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh/pure"
 6. Set the local repo to not show untracked files
 
 ```
-config config --local status.showUntrackedFiles no
+config cfg --local status.showUntrackedFiles no
 ```
 
 7. Update current shell
