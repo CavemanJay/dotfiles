@@ -47,9 +47,12 @@ alias edit_aliases='${=EDITOR} ~/.zsh/aliasrc'
 
 alias awe='code $HOME/.config/awesome'
 alias kali='exec VBoxManage startvm kali'
-alias config='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
+alias cfg='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
 alias open='xdg-open'
 alias remove_unused_dependencies='pacman -Qtdq && sudo pacman -Rns $(pacman -Qtdq)'
+
+alias code='code-insiders'
+alias vim='nvim'
 
 [ -z "$NVM_DIR" ] && export NVM_DIR="$HOME/.nvm"
 source /usr/share/nvm/nvm.sh
@@ -65,3 +68,4 @@ function md(){
     echo "Starting grip server"
     grip -b $1 
 }
+
