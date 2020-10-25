@@ -72,5 +72,5 @@ makepkg -si
 - Install default packages
 
 ```bash
-yay -S zsh zsh-autosuggestions zsh-syntax-highlighting alsa-utils libpulse python-iwlib python-psutil python-setproctitle qtile neofetch thefuck pkgfile mlocate picom alacritty bashtop cheat clipmenu polkit-gnome udiskie xfce4-power-manager dunst i3lock lxappearance networkmanager network-manager-applet pulseaudio ranger tldr ueberzug j4-dmenu-desktop-git
+yay -S zsh zsh-autosuggestions zsh-syntax-highlighting alsa-utils libpulse python-iwlib python-psutil python-setproctitle qtile neofetch thefuck pkgfile mlocate picom alacritty bashtop cheat clipmenu polkit-gnome udiskie xfce4-power-manager dunst i3lock lxappearance networkmanager network-manager-applet pulseaudio ranger tldr ueberzug j4-dmenu-desktop-git tmux
 ```
