@@ -56,6 +56,11 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 source /usr/share/autojump/autojump.zsh 2>/dev/null # Enable autojump
 source /usr/share/doc/pkgfile/command-not-found.zsh # Enable command not found
 
+source $HOME/scripts/zsh/extract.plugin.zsh
+
+# Rust
+source $HOME/.cargo/env
+
 #[[ -s /home/jay/.autojump/etc/profile.d/autojump.sh ]] && source /home/jay/.autojump/etc/profile.d/autojump.sh
 
 export PATH="$PATH:$HOME/.vim/bundle/vim-superman/bin"
