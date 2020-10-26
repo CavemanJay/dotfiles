@@ -39,7 +39,7 @@ git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh/pure"
 6. Set the local repo to not show untracked files
 
 ```
-config cfg --local status.showUntrackedFiles no
+cfg config --local status.showUntrackedFiles no
 ```
 
 7. Update current shell
