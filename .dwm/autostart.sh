@@ -10,7 +10,10 @@ xfce4-power-manager &
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg) &
 
-while xsetroot -name "`date +"%m/%d/%Y %I:%M %p"`"
-do
-    sleep 60
-done &
+dwmblocks &
+
+#while xsetroot -name "`date +"%m/%d/%Y %I:%M %p"`"
+#do
+#    sleep 60
+#done &
+

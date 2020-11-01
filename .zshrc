@@ -75,3 +75,8 @@ neofetch
 # tabtab source for electron-forge package
 # uninstall by removing these lines or running `tabtab uninstall electron-forge`
 [[ -f /home/jaydlc/.nvm/versions/node/v14.4.0/lib/node_modules/electron-forge/node_modules/tabtab/.completions/electron-forge.zsh ]] && . /home/jaydlc/.nvm/versions/node/v14.4.0/lib/node_modules/electron-forge/node_modules/tabtab/.completions/electron-forge.zsh
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+export PATH="$PATH:$HOME/scripts/statusbar"
+export TERMINAL="st"
