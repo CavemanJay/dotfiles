@@ -5,7 +5,7 @@ Dotfiles for my linux systems
 ## Quick Setup
 
 ```
-curl -s https://gist.githubusercontent.com/JayCuevas/c78a7810606d4936f120be2b6d79f480/raw/91df82109fc6ebf33fb4cb7aac042d19eb6e41a8/arch_setup.sh | bash
+curl -s https://gist.githubusercontent.com/JayCuevas/c78a7810606d4936f120be2b6d79f480/raw/5b9e2de23969d00c61892d1dccd70d914c0f2ab5/arch_setup.sh | bash
 ```
 
 ## Cloning to new system
