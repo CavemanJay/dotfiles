@@ -69,6 +69,6 @@ function md(){
     grip -b $1 
 }
 
-alias msfconsole="msfconsole -x \"db_connect ${USER}@msf\""
+alias msfconsole="msfconsole -x \"db_connect postgres:toor@db/msf\""
 alias quickftp="python -m pyftpdlib -w"
 alias quickhttp="sudo python -m http.server 80"
