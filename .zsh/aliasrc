@@ -33,7 +33,7 @@ ex ()
   fi
 }
 
-export EDITOR=vim
+export EDITOR=nvim
 
 alias cls='clear'
 alias clip='xclip -sel clip'
@@ -69,3 +69,6 @@ function md(){
     grip -b $1 
 }
 
+alias msfconsole="msfconsole -x \"db_connect ${USER}@msf\""
+alias quickftp="python -m pyftpdlib -w"
+alias quickhttp="sudo python -m http.server 80"
