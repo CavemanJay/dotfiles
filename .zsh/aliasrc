@@ -41,12 +41,10 @@ alias clip='xclip -sel clip'
 alias pacman-update='sudo pacman-mirrors --geoip'
 
 alias zshrc='${=EDITOR} ~/.zshrc' # Quick access to the ~/.zshrc file
-alias vrc='vim ~/.vimrc'
 
-alias edit_aliases='${=EDITOR} ~/.zsh/aliasrc'
+alias vrc='${=EDITOR} ~/.vimrc'
+alias aliasrc='${=EDITOR} ~/.zsh/aliasrc'
 
-alias awe='code $HOME/.config/awesome'
-alias kali='exec VBoxManage startvm kali'
 alias cfg='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
 alias open='xdg-open'
 alias remove_unused_dependencies='pacman -Qtdq && sudo pacman -Rns $(pacman -Qtdq)'
@@ -60,7 +58,7 @@ source /usr/share/nvm/bash_completion
 source /usr/share/nvm/install-nvm-exec
 
 alias glg="git log --graph --abbrev-commit --decorate --format=format:'%C(bold green)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold yellow)(%ar)%C(reset)%C(auto)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all"
-alias clg="config log --graph --abbrev-commit --decorate --format=format:'%C(bold green)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold yellow)(%ar)%C(reset)%C(auto)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all"
+alias clg="cfg log --graph --abbrev-commit --decorate --format=format:'%C(bold green)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold yellow)(%ar)%C(reset)%C(auto)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all"
 
 # Function to show a markdown document in a browser
 # Requires grip (pip install grip)
@@ -69,6 +67,7 @@ function md(){
     grip -b $1 
 }
 
-alias msfconsole="msfconsole -x \"db_connect ${USER}@msf\""
+alias dc='docker-compose'
+alias msfconsole="msfconsole -x \"db_connect ${USER}:toor@msf\""
 alias quickftp="python -m pyftpdlib -w"
 alias quickhttp="sudo python -m http.server 80"
