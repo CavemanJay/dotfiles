@@ -9,8 +9,7 @@ usermodmap=$HOME/.Xmodmap
 sysresources=/etc/X11/xinit/.Xresources
 sysmodmap=/etc/X11/xinit/.Xmodmap
 
-#SESSION=${1:-xfce}
-SESSION=${1:-qtile}
+SESSION=${1:-dwm}
 
 # merge in defaults and keymaps
 
@@ -66,3 +65,4 @@ get_session(){
 }
 
 exec $(get_session)
+
