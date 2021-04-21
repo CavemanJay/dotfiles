@@ -78,4 +78,6 @@
 ;(add-hook 'dired-mode-hook 'all-the-icons-dired-mode)
 
 (after! org
-  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+  (add-hook 'org-mode-hook (lambda () (local-set-key (kbd "M-e") 'org-latex-export-to-pdf)))
+  (add-hook 'org-mode-hook (lambda () (local-set-key (kbd "M-t") 'org-babel-tangle))))
