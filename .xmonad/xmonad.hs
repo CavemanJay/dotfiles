@@ -264,7 +264,7 @@ myLayoutHook = avoidStruts $ mouseResize $ windowArrange $ T.toggleLayouts float
                                  ||| noBorders tabs
                                  ||| threeCol
 
-myWorkspaces = [" dev ", " www ", " sys ", " doc ", " vbox ", " chat ", " mus ", " vid ", " gfx "]
+myWorkspaces = [" www ", " dev ", " sys ", " doc ", " vbox ", " chat ", " mus ", " vid ", " gfx "]
 myWorkspaceIndices = M.fromList $ zipWith (,) myWorkspaces [1..] -- (,) == \x y -> (x,y)
 
 clickable ws = "<action=xdotool key super+"++show i++">"++ws++"</action>"
@@ -304,9 +304,9 @@ myManageHook = composeAll
      , className =? "splash"          --> doFloat
      , className =? "toolbar"         --> doFloat
      , title =? "Oracle VM VirtualBox Manager"  --> doFloat
-     , title =? "Mozilla Firefox"     --> doShift ( myWorkspaces !! 1 )
-     , className =? "brave-browser"   --> doShift ( myWorkspaces !! 1 )
-     , className =? "qutebrowser"     --> doShift ( myWorkspaces !! 1 )
+     , title =? "Mozilla Firefox"     --> doShift ( myWorkspaces !! 0 )
+     , className =? "brave-browser"   --> doShift ( myWorkspaces !! 0 )
+     , className =? "qutebrowser"     --> doShift ( myWorkspaces !! 0 )
      , className =? "mpv"             --> doShift ( myWorkspaces !! 7 )
      , className =? "Gimp"            --> doShift ( myWorkspaces !! 8 )
      , className =? "VirtualBox Manager" --> doShift  ( myWorkspaces !! 4 )
@@ -417,15 +417,15 @@ myKeys =
 
     -- Emacs (CTRL-e followed by a key)
         -- , ("C-e e", spawn myEmacs)                 -- start emacs
-        , ("M-e b", spawn (myEmacs ++ "--eval '(ibuffer)'"))   -- list buffers
-        , ("M-e d", spawn (myEmacs ++ "--eval '(dired nil)'")) -- dired
+        , ("C-e b", spawn (myEmacs ++ "--eval '(ibuffer)'"))   -- list buffers
+        , ("C-e d", spawn (myEmacs ++ "--eval '(dired nil)'")) -- dired
         -- , ("M-e i", spawn (myEmacs ++ ("--eval '(erc)'")))       -- erc irc client
         -- , ("M-e m", spawn (myEmacs ++ ("--eval '(mu4e)'")))      -- mu4e email
         -- , ("M-e n", spawn (myEmacs ++ ("--eval '(elfeed)'")))    -- elfeed rss
         -- , ("M-e s", spawn (myEmacs ++ ("--eval '(eshell)'")))    -- eshell
         -- , ("M-e t", spawn (myEmacs ++ ("--eval '(mastodon)'")))  -- mastodon.el
-        , ("M-e v", spawn (myEmacs ++ "--eval '(+term/here nil)'")) -- vterm if on Doom Emacs
-        , ("M-e w", spawn (myEmacs ++ "--eval '(doom/window-maximize-buffer(eww \"distrotube.com\"))'")) -- eww browser if on Doom Emacs
+        , ("C-e v", spawn (myEmacs ++ "--eval '(+term/here nil)'")) -- vterm if on Doom Emacs
+        , ("C-e w", spawn (myEmacs ++ "--eval '(doom/window-maximize-buffer(eww \"distrotube.com\"))'")) -- eww browser if on Doom Emacs
 
     -- Multimedia Keys
         , ("<XF86AudioPlay>", spawn (myTerminal ++ "mocp --play"))
@@ -448,7 +448,7 @@ myKeys =
 main :: IO ()
 main = do
     -- Launching three instances of xmobar on their monitors.
-    xmproc0 <- spawnPipe "xmobar -x 0 $HOME/.config/xmobar/xmobar.hs"
+    xmproc0 <- spawnPipe "xmobar -x 0 $HOME/.config/xmobar/xmobarrc"
     -- the xmonad, ya know...what the WM is named after!
     xmonad $ ewmh def
         { manageHook         = myManageHook <+> manageDocks
