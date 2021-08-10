@@ -80,4 +80,31 @@
 (after! org
   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
   (add-hook 'org-mode-hook (lambda () (local-set-key (kbd "M-e") 'org-latex-export-to-pdf)))
-  (add-hook 'org-mode-hook (lambda () (local-set-key (kbd "M-t") 'org-babel-tangle))))
+
+  (use-package! ox-extra
+    :config
+    (ox-extras-activate '(latex-header-blocks ignore-headlines)))
+  (use-package! ox-latex
+    :init
+    ;; code here will run immediately
+    :config
+    ;; code here will run after the package is loaded
+    (setq org-latex-hyperref-template nil) ;; stop org adding hypersetup{author} to latex export
+
+    ;; deleted unwanted file extensions after latexMK
+    (setq org-latex-logfiles-extensions
+          (quote ("lof" "lot" "tex~" "aux" "idx" "log" "out" "toc" "nav" "snm" "vrb" "dvi" "fdb_latexmk" "blg" "brf" "fls" "entoc" "ps" "spl" "bbl" "xmpi" "run.xml" "bcf" "acn" "acr" "alg" "glg" "gls" "ist")))
+
+    ;; remove the default packages that latex imports
+    (setq org-latex-packages-alist 'nil)
+    ;; only import the following packages by default for latex
+    (setq org-latex-default-packages-alist
+          '(("" "hyperref" t)))
+    )
+
+  )
+
+(map! :leader
+      (:prefix ("e" . "export")
+       :desc "Export to html" "h" #'org-html-export-to-html
+       :desc "Export to pdf" "p" #'org-latex-export-to-pdf))
