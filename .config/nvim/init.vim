@@ -1,5 +1,7 @@
 call plug#begin()
 
+Plug 's1n7ax/nvim-terminal'
+
 Plug 'williamboman/nvim-lsp-installer'
 
 Plug 'mhinz/vim-startify'
@@ -83,6 +85,7 @@ require('nvim-tree').setup()
 require('lualine').setup()
 require('focus').setup()
 require("nvim-lsp-installer").setup {}
+require("nvim-terminal").setup {}
 
 vim.opt.list = true
 vim.opt.listchars:append("eol:↴")
@@ -135,6 +138,7 @@ local opts = {
 require('rust-tools').setup(opts)
 require'lspconfig'.pyright.setup{}
 require'lspconfig'.sumneko_lua.setup{}
+require'lspconfig'.omnisharp.setup{}
 EOF
 
 " Setup Completion
@@ -218,9 +222,11 @@ nnoremap <silent> ge <cmd>lua require("lspsaga.diagnostic").goto_next({ severity
 " this removes the jitter when warnings/errors flow in
 set signcolumn=yes
 
-autocmd BufWritePre *.rs lua vim.lsp.buf.formatting_sync()
+" autocmd BufWritePre *.rs lua vim.lsp.buf.formatting_sync()
+autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()
 
 command EditConfig :edit ~/.config/nvim/init.vim
+command EditConfigWin32 :edit ~/AppData/Local/nvim/init.vim
 
 let mapleader = "\<Space>"
 nnoremap <c-p> <cmd>Telescope find_files<CR>
