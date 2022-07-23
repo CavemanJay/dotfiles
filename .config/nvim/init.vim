@@ -50,7 +50,7 @@ Plug 'nvim-telescope/telescope.nvim'
 "Plug 'arcticicestudio/nord-vim'
 
 " Commenting plugin
-Plug 'terrortyler/nvim-comment'
+Plug 'terrortylor/nvim-comment'
 
 " UI stuff
 Plug 'RishabhRD/popfix'
@@ -181,6 +181,8 @@ saga.init_lsp_saga()
 EOF
 
 set mouse+=a
+set relativenumber
+set colorcolumn=80
 
 " Code navigation
 nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
@@ -221,7 +223,7 @@ autocmd BufWritePre *.rs lua vim.lsp.buf.formatting_sync()
 command EditConfig :edit ~/.config/nvim/init.vim
 
 let mapleader = "\<Space>"
-nnoremap <Leader>ff <cmd>Telescope find_files<CR>
+nnoremap <c-p> <cmd>Telescope find_files<CR>
 nnoremap <Leader>fg <cmd>Telescope live_grep<CR>
 nnoremap <Leader>fb <cmd>Telescope buffers<CR>
 nnoremap <Leader>fh <cmd>Telescope help_tags<CR>
@@ -238,8 +240,14 @@ nnoremap <Leader>wj <cmd>FocusSplitDown<CR>
 nnoremap <Leader>wk <cmd>FocusSplitUp<CR>
 nnoremap <Leader>wl <cmd>FocusSplitRight<CR>
 nnoremap <Leader>wt <cmd>FocusSplitDown cmd term<CR>
+nnoremap <Leader>w= <cmd>FocusEqualise<CR>
+nnoremap <Leader>wo <cmd>on<CR>
 
 " File tree
 nnoremap <Leader>no <cmd>NvimTreeOpen<CR>
 nnoremap <Leader>nc <cmd>NvimTreeClose<CR>
 nnoremap <Leader>nt <cmd>NvimTreeToggle<CR>
+
+" Buffers
+nnoremap <Leader>bn <cmd>bnext<CR>
+nnoremap <Leader>bp <cmd>bprev<CR>
