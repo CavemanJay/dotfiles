@@ -1,6 +1,10 @@
 call plug#begin()
 
-Plug 's1n7ax/nvim-terminal'
+Plug 'skywind3000/asyncrun.vim'
+
+Plug 'TimUntersberger/neogit'
+
+Plug 'caenrique/nvim-toggle-terminal'
 
 Plug 'williamboman/nvim-lsp-installer'
 
@@ -9,8 +13,6 @@ Plug 'mhinz/vim-startify'
 Plug 'beauwilliams/focus.nvim'
 
 Plug 'nvim-lualine/lualine.nvim'
-" If you want to have icons in your statusline choose one of these
-Plug 'kyazdani42/nvim-web-devicons'
 
 Plug 'lukas-reineke/indent-blankline.nvim'
 
@@ -67,6 +69,7 @@ call plug#end()
 
 " set theme
 let g:material_style = "darker"
+let g:asyncrun_open = 8
 colorscheme material
 
 " Set completeopt to have a better completion experience
@@ -74,7 +77,8 @@ colorscheme material
 " menuone: popup even when there's only one match
 " noinsert: Do not insert text until a selection is made
 " noselect: Do not select, force user to select one from the menu
-set completeopt=menuone,noinsert,noselect
+" set completeopt=menuone,noinsert,noselect
+set completeopt=menuone,noinsert
 
 " Avoid showing extra messages when using completion
 set shortmess+=c
@@ -85,7 +89,6 @@ require('nvim-tree').setup()
 require('lualine').setup()
 require('focus').setup()
 require("nvim-lsp-installer").setup {}
-require("nvim-terminal").setup {}
 
 vim.opt.list = true
 vim.opt.listchars:append("eol:↴")
@@ -186,57 +189,92 @@ EOF
 
 set mouse+=a
 set relativenumber
+" Use system clipboard for yanking/pasting
+set clipboard=unnamed 
 set colorcolumn=80
 
-" Code navigation
-nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
-"nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
-nnoremap <silent> K     <cmd>Lspsaga hover_doc<CR>
-nnoremap <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
-nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
-nnoremap <silent> 1gD   <cmd>lua vim.lsp.buf.type_definition()<CR>
-nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
-" nnoremap <silent> gr    <cmd>Lspsaga lsp_finder<CR>
-nnoremap <silent> gR    <cmd>Lspsaga rename<CR>
-nnoremap <silent> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
-nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
-nnoremap <silent> gd    <cmd>lua vim.lsp.buf.definition()<CR>
-nnoremap <silent> ga    <cmd>lua vim.lsp.buf.code_action()<CR>
+command EditConfig :edit ~/.config/nvim/init.vim
+command EditConfigWin32 :edit ~/AppData/Local/nvim/init.vim
+command Reloc :cd %:p:h
+command BufCurOnly execute '%bdelete|edit#|bdelete#'
 
 
-" Set updatetime for CursorHold
-" 300ms of no cursor movement to trigger CursorHold
 set updatetime=300
-" Show diagnostic popup on cursor hold
-"autocmd CursorHold * lua vim.diagnostic.open_float(nil, { focusable = false })
-"autocmd CursorHold * Lspsaga show_line_diagnostics
+" autocmd CursorHold * Lspsaga hover_doc
+autocmd TermOpen * startinsert
 
-" Goto previous/next diagnostic warning/error
-" nnoremap <silent> g[ <cmd>lua vim.diagnostic.goto_prev()<CR>
-" nnoremap <silent> g] <cmd>lua vim.diagnostic.goto_next()<CR>
-nnoremap <silent> g[ <cmd>Lspsaga diagnostic_jump_next<CR>
-nnoremap <silent> g] <cmd>Lspsaga diagnostic_jump_prev<CR>
-nnoremap <silent> ge <cmd>lua require("lspsaga.diagnostic").goto_next({ severity = vim.diagnostic.severity.ERROR })<CR>
+" CODE NAVIGATION
+" code hover
+" nnoremap <silent> <Leader>ch   <cmd>Lspsaga hover_doc<CR>
+nnoremap <silent> gch   <cmd>Lspsaga hover_doc<CR>
+" code (quick) actions
+" nnoremap <silent> <Leader>ca   <cmd>lua vim.lsp.buf.code_action()<CR>
+nnoremap <silent> gca   <cmd>lua vim.lsp.buf.code_action()<CR>
+" code comment
+" nnoremap <silent> <Leader>cc   <cmd>CommentToggle<CR>
+" code grep
+" nnoremap <silent> <Leader>cg   <cmd>Telescope live_grep<CR>
+nnoremap <silent> gcg   <cmd>Telescope live_grep<CR>
+
+" SCHEMA => c: Code -> s: Symbol -> action
+" code symbol implementation
+" nnoremap <silent> <Leader>csi  <cmd>Telescope lsp_implementations<CR>
+" " code symbol/signature help
+" nnoremap <silent> <Leader>csh  <cmd>lua vim.lsp.buf.signature_help()<CR>
+" " code symbol definition
+" nnoremap <silent> <Leader>csd  <cmd>Telescope lsp_definitions<CR>
+" nnoremap <silent> <Leader>csD  <cmd>Telescope lsp_type_definitions<CR>
+" " code symbol references
+" nnoremap <silent> <Leader>csr  <cmd>Telescope lsp_references<CR>
+" " code symbol Rename
+" nnoremap <silent> <Leader>csR  <cmd>Lspsaga rename<CR>
+" " code symbols list document
+" nnoremap <silent> <Leader>csld <cmd>Telescope lsp_document_symbols<CR>
+" " code symbols list workspace
+" nnoremap <silent> <Leader>cslw <cmd>Telescope lsp_workspace_symbols<CR>
+
+
+nnoremap <silent> gci  <cmd>Telescope lsp_implementations<CR>
+" code symbol/signature help
+nnoremap <silent> gcH  <cmd>lua vim.lsp.buf.signature_help()<CR>
+" code symbol definition
+nnoremap <silent> gcd  <cmd>Telescope lsp_definitions<CR>
+nnoremap <silent> gcD  <cmd>Telescope lsp_type_definitions<CR>
+" code symbol references
+nnoremap <silent> gcr  <cmd>Telescope lsp_references<CR>
+" code symbol Rename
+nnoremap <silent> gcR  <cmd>Lspsaga rename<CR>
+" code symbols list document
+nnoremap <silent> gcls <cmd>Telescope lsp_document_symbols<CR>
+" code symbols list workspace
+nnoremap <silent> gclS <cmd>Telescope lsp_workspace_symbols<CR>
+
+" SCHEMA => c: Code -> d: Diagnostics => action
+" code diagnostics next
+nnoremap <silent> gcen <cmd>Lspsaga diagnostic_jump_next<CR>
+" code diagnostics previous
+nnoremap <silent> gcep <cmd>Lspsaga diagnostic_jump_prev<CR>
+" code diagnostics error
+nnoremap <silent> gcee <cmd>lua require("lspsaga.diagnostic").goto_next({ severity = vim.diagnostic.severity.ERROR })<CR>
+
+" SCHEMA => v: Vim -> action
+" vim change dir (to current file)
+nnoremap <silent> <Leader>vcd <cmd>Reloc<CR>
 
 " have a fixed column for the diagnostics to appear in
 " this removes the jitter when warnings/errors flow in
 set signcolumn=yes
 
-" autocmd BufWritePre *.rs lua vim.lsp.buf.formatting_sync()
-autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()
-
-command EditConfig :edit ~/.config/nvim/init.vim
-command EditConfigWin32 :edit ~/AppData/Local/nvim/init.vim
+autocmd BufWritePre *.rs lua vim.lsp.buf.formatting_sync(nil,800)
 
 let mapleader = "\<Space>"
 nnoremap <c-p> <cmd>Telescope find_files<CR>
+nnoremap <Leader>ff <cmd>Telescope find_files<CR>
 nnoremap <Leader>fg <cmd>Telescope live_grep<CR>
 nnoremap <Leader>fb <cmd>Telescope buffers<CR>
 nnoremap <Leader>fh <cmd>Telescope help_tags<CR>
 nnoremap <Leader>fc <cmd>Telescope commands<CR>
-nnoremap <Leader>fr <cmd>Telescope lsp_references<CR>
-nnoremap <Leader>fd <cmd>Telescope lsp_definitions<CR>
-nnoremap <Leader>fi <cmd>Telescope lsp_implementations<CR>
+nnoremap <Leader>fm <cmd>Telescope marks<CR>
 
 " Windows
 nnoremap <Leader>wc <cmd>close<CR>
@@ -245,9 +283,10 @@ nnoremap <Leader>wh <cmd>FocusSplitLeft<CR>
 nnoremap <Leader>wj <cmd>FocusSplitDown<CR>
 nnoremap <Leader>wk <cmd>FocusSplitUp<CR>
 nnoremap <Leader>wl <cmd>FocusSplitRight<CR>
-nnoremap <Leader>wt <cmd>FocusSplitDown cmd term<CR>
 nnoremap <Leader>w= <cmd>FocusEqualise<CR>
 nnoremap <Leader>wo <cmd>on<CR>
+nnoremap <Leader>wt <cmd>bo term<CR> " Open terminal on bottom
+nnoremap <c-x> <cmd>ToggleTerminal<CR>
 
 " File tree
 nnoremap <Leader>no <cmd>NvimTreeOpen<CR>
@@ -255,5 +294,7 @@ nnoremap <Leader>nc <cmd>NvimTreeClose<CR>
 nnoremap <Leader>nt <cmd>NvimTreeToggle<CR>
 
 " Buffers
-nnoremap <Leader>bn <cmd>bnext<CR>
 nnoremap <Leader>bp <cmd>bprev<CR>
+nnoremap <Leader>bn <cmd>bnext<CR>
+nnoremap <Leader>bb <cmd>Telescope buffers<CR>
+nnoremap <Leader>bc <cmd>BufCurOnly<CR>
