@@ -1,77 +1,219 @@
 {
-  "workbench.colorTheme": "Visual Studio Dark",
-  "terminal.integrated.shell.windows": "C:\\Program Files\\Git\\bin\\bash.exe",
-  "[javascript]": {
+  "editor.inlineSuggest.enabled": true,
+  "git.confirmSync": false,
+  "update.mode": "manual",
+  "git.autofetch": true,
+  "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "git.autofetch": true,
-  "[html]": {
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.patterns": {
+    "*.ts": "${capture}.js, ${capture}.typegen.ts",
+    "*.js": "${capture}.js.map, ${capture}.min.js, ${capture}.d.ts",
+    "*.jsx": "${capture}.js",
+    "*.tsx": "${capture}.ts, ${capture}.typegen.ts",
+    "tsconfig.json": "tsconfig.*.json",
+    "package.json": "package-lock.json, yarn.lock, pnpm-lock.yaml",
+    "*.mts": "${capture}.typegen.ts",
+    "*.cts": "${capture}.typegen.ts",
+    "*.cshtml": "${capture}.cshtml.cs",
+    "*.dart": "${capture}.g.dart"
+  },
+  "[typescriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
   },
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "editor.renderWhitespace": "none",
+  "gitlens.currentLine.enabled": false,
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "workbench.iconTheme": "material-icon-theme",
+  "editor.lineNumbers": "relative",
+  "haskell.manageHLS": "GHCup",
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "[scss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.stickyScroll.enabled": true,
+  "[markdown]": {
+    "editor.unicodeHighlight.invisibleCharacters": true,
+    "editor.defaultFormatter": "yzhang.markdown-all-in-one"
+  },
+  "cSpell.ignoreWords": ["OSINT"],
+  "cSpell.userWords": ["Kdenlive"],
+  "[c]": {
+    "editor.defaultFormatter": "ms-vscode.cpptools"
+  },
+  "remote.SSH.remotePlatform": {
+    "10.0.145.79": "linux",
+    "192.168.88.230": "linux",
+    "mac.jay": "macOS"
+  },
+  "mssql.connections": [
+    {
+      "server": "PSI-STP-SQL1.precisecal.local\\MSSQLSERVER1",
+      "database": "",
+      "authenticationType": "SqlLogin",
+      "user": "app_mudcats",
+      "password": "",
+      "emptyPasswordInput": false,
+      "savePassword": false,
+      "encrypt": "Mandatory",
+      "trustServerCertificate": true,
+      "connectTimeout": 15,
+      "commandTimeout": 30,
+      "applicationName": "vscode-mssql"
+    },
+    {
+      "server": "xps.lan",
+      "database": "mudcats",
+      "authenticationType": "SqlLogin",
+      "user": "sa",
+      "password": "",
+      "emptyPasswordInput": false,
+      "savePassword": true,
+      "profileName": "devcats",
+      "encrypt": "Mandatory",
+      "trustServerCertificate": true,
+      "connectTimeout": 15,
+      "commandTimeout": 30,
+      "applicationName": "vscode-mssql"
+    },
+    {
+      "server": "xps.lan",
+      "database": "CleanCats",
+      "authenticationType": "SqlLogin",
+      "user": "sa",
+      "password": "",
+      "emptyPasswordInput": false,
+      "savePassword": true,
+      "profileName": "CleanCats",
+      "encrypt": "Mandatory",
+      "trustServerCertificate": true,
+      "connectTimeout": 15,
+      "commandTimeout": 30,
+      "applicationName": "vscode-mssql"
+    }
+  ],
+  "rust-analyzer.check.command": "clippy",
+  "git.openRepositoryInParentFolders": "always",
+  "workbench.editorAssociations": {
+    "*.mem": "hexEditor.hexedit",
+    "*.db": "sqlite-viewer.option"
+  },
+  "markdown-preview-enhanced.previewTheme": "github-dark.css",
+  "editor.multiCursorModifier": "ctrlCmd",
+  "[python]": {
+    "editor.formatOnType": false,
+    "editor.defaultFormatter": "ms-python.black-formatter"
+  },
+  "github.copilot.enable": {
+    "*": true,
+    "plaintext": true,
+    "markdown": true,
+    "scminput": false,
+    "yaml": true
+  },
+  // "go.toolsManagement.autoUpdate": true,
+  // "[java]": {
+  //     "editor.defaultFormatter": "redhat.java"
+  // },
+  "editor.guides.bracketPairs": "active",
+  "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
+  "zenMode.fullScreen": false,
+  // "diffEditor.ignoreTrimWhitespace": false,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "todo-tree.general.showActivityBarBadge": true,
+  "todo-tree.general.tags": [
+    "BUG",
+    "HACK",
+    "FIXME",
+    "TODO",
+    "XXX",
+    "[ ]",
+    "[x]",
+    "todo!",
+    "unimplemented!"
+  ],
+  "vim.foldfix": true,
+  "dart.debugExternalPackageLibraries": false,
+  "dart.debugSdkLibraries": false,
+  "dart.previewFlutterUiGuides": true,
+  "dart.previewFlutterUiGuidesCustomTracking": true,
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  "editor.tabSize": 2,
+  "workbench.editor.limit.enabled": true,
+  "workbench.editor.limit.value": 2,
+  "workbench.editor.limit.perEditorGroup": true,
+  "editor.minimap.enabled": false,
+  "[sql]": {
+    "editor.defaultFormatter": "mtxr.sqltools"
   },
-  "editor.lineNumbers": "relative",
-  "editor.fontSize": 17,
-  "editor.fontFamily": "FiraCode Nerd Font",
-  "terminal.integrated.fontFamily": "DroidSansMono Nerd Font",
-  "editor.fontLigatures": true,
-  "todo-tree.tree.showScanModeButton": false,
-  "focus.highlightRange": "none",
-  "git.confirmSync": false,
-  "typescript.updateImportsOnFileMove.enabled": "always",
-  "javascript.updateImportsOnFileMove.enabled": "always",
-  "[dart]": {
-    "editor.formatOnSave": true,
-    "editor.formatOnType": true,
-    "editor.rulers": [80],
-    "editor.selectionHighlight": false,
-    "editor.suggest.snippetsPreventQuickSuggestions": false,
-    "editor.suggestSelection": "first",
-    "editor.tabCompletion": "onlySnippets",
-    "editor.wordBasedSuggestions": false
+  "csharp.inlayHints.enableInlayHintsForTypes": true,
+  "csharp.inlayHints.enableInlayHintsForImplicitVariableTypes": true,
+  "csharp.inlayHints.enableInlayHintsForLambdaParameterTypes": true,
+  "go.toolsManagement.autoUpdate": true,
+  "[cpp]": {
+    "editor.defaultFormatter": "ms-vscode.cpptools"
   },
-  "dart.previewFlutterUiGuides": true,
-  "dart.debugExternalLibraries": false,
-  "dart.debugSdkLibraries": false,
-  "dart.previewEmbeddedDevTools": true,
-  "taskExplorer.debugLevel": 3,
-  "taskExplorer.groupDashed": true,
-  "diffEditor.ignoreTrimWhitespace": true,
-  "taskExplorer.enableSideBar": true,
-  "[typescriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "window.zoomLevel": 0,
-  "editor.multiCursorModifier": "alt",
-  "[markdown]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "editor.rulers": [80],
-  "FSharp.useSdkScripts": true,
-  "workbench.editor.showTabs": true,
-  "gitlens.hovers.currentLine.over": "line",
-  "editor.suggestSelection": "first",
-  "workbench.list.automaticKeyboardNavigation": false,
-  "editor.cursorBlinking": "solid",
-  "files.exclude": {
-    "**/.classpath": true,
-    "**/.project": true,
-    "**/.settings": true,
-    "**/.factorypath": true
-  },
-  "editor.minimap.enabled": true,
-  "workbench.activityBar.visible": true,
-  "window.menuBarVisibility": "toggle",
-  "terminal.integrated.shell.linux": "/bin/zsh",
-  "terminal.external.linuxExec": "/usr/bin/alacritty",
-  "sync.gist": "43d99ea670e9d4cd8493185413f5de05",
-  "python.insidersChannel": "daily",
-  "workbench.iconTheme": "material-icon-theme"
+  "editor.accessibilitySupport": "off",
+  "vim.gdefault": true,
+  "vim.highlightedyank.enable": true,
+  "vim.leader": " ",
+  "vim.normalModeKeyBindings": [
+    {
+      "before": ["<C-n>"],
+      "commands": [":nohl"]
+    },
+    {
+      "before": ["leader", "w", "w"],
+      "commands": ["workbench.action.files.save"]
+    },
+    {
+      "before": ["leader", "w", "a"],
+      "commands": ["workbench.action.files.saveAll"]
+    },
+    {
+      "before": ["leader", "p"],
+      "commands": ["workbench.action.quickOpen"]
+    },
+    {
+      "before": ["leader", "s"],
+      "commands": ["workbench.action.gotoSymbol"]
+    },
+    {
+      "before": ["leader", "S"],
+      "commands": ["workbench.action.showAllSymbols"]
+    },
+    {
+      "before": ["leader", "e"],
+      "commands": ["mssql.runCurrentStatement"]
+    },
+    {
+      "before": ["leader", "E"],
+      "commands": ["mssql.runQuery"]
+    },
+    {
+      "before": ["leader", "i", "u"],
+      "commands": ["insert-unicode.insertText"]
+    }
+  ],
+  "svelte.enable-ts-plugin": true,
+  "[svelte]": {
+    "editor.defaultFormatter": "svelte.svelte-vscode"
+  }
 }
