@@ -14,10 +14,22 @@
     "*.tsx": "${capture}.ts, ${capture}.typegen.ts",
     "tsconfig.json": "tsconfig.*.json",
     "package.json": "package-lock.json, yarn.lock, pnpm-lock.yaml",
+    "*.templ": "${capture}_templ.go,${capture}_templ.txt",
+    "pubspec.yaml": "pubspec.lock,pubspec_overrides.yaml,.packages,.flutter-plugins,.flutter-plugins-dependencies,.metadata",
+    "*.dart": "${capture}.g.dart",
+    "*.fs": "${basename}.fsi, ${basename}.fs.js, ${basename}.fs.js.map",
+    "*.fsl": "${basename}.fsi, ${basename}.fs",
+    "*.fsy": "${basename}.fsi, ${basename}.fs",
+    "Cargo.toml": "Cargo.lock",
     "*.mts": "${capture}.typegen.ts",
     "*.cts": "${capture}.typegen.ts",
     "*.cshtml": "${capture}.cshtml.cs",
-    "*.dart": "${capture}.g.dart"
+    "*.sqlite": "${capture}.${extname}-*",
+    "*.db": "${capture}.${extname}-*",
+    "*.sqlite3": "${capture}.${extname}-*",
+    "*.db3": "${capture}.${extname}-*",
+    "*.sdb": "${capture}.${extname}-*",
+    "*.s3db": "${capture}.${extname}-*"
   },
   "[typescriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -61,52 +73,6 @@
     "192.168.88.230": "linux",
     "mac.jay": "macOS"
   },
-  "mssql.connections": [
-    {
-      "server": "PSI-STP-SQL1.precisecal.local\\MSSQLSERVER1",
-      "database": "",
-      "authenticationType": "SqlLogin",
-      "user": "app_mudcats",
-      "password": "",
-      "emptyPasswordInput": false,
-      "savePassword": false,
-      "encrypt": "Mandatory",
-      "trustServerCertificate": true,
-      "connectTimeout": 15,
-      "commandTimeout": 30,
-      "applicationName": "vscode-mssql"
-    },
-    {
-      "server": "xps.lan",
-      "database": "mudcats",
-      "authenticationType": "SqlLogin",
-      "user": "sa",
-      "password": "",
-      "emptyPasswordInput": false,
-      "savePassword": true,
-      "profileName": "devcats",
-      "encrypt": "Mandatory",
-      "trustServerCertificate": true,
-      "connectTimeout": 15,
-      "commandTimeout": 30,
-      "applicationName": "vscode-mssql"
-    },
-    {
-      "server": "xps.lan",
-      "database": "CleanCats",
-      "authenticationType": "SqlLogin",
-      "user": "sa",
-      "password": "",
-      "emptyPasswordInput": false,
-      "savePassword": true,
-      "profileName": "CleanCats",
-      "encrypt": "Mandatory",
-      "trustServerCertificate": true,
-      "connectTimeout": 15,
-      "commandTimeout": 30,
-      "applicationName": "vscode-mssql"
-    }
-  ],
   "rust-analyzer.check.command": "clippy",
   "git.openRepositoryInParentFolders": "always",
   "workbench.editorAssociations": {
@@ -192,6 +158,14 @@
       "commands": ["workbench.action.quickOpen"]
     },
     {
+      "before": ["leader", "/"],
+      "commands": ["editor.actions.findWithArgs"]
+    },
+    {
+      "before": ["leader", "?"],
+      "commands": ["workbench.action.findInFiles"]
+    },
+    {
       "before": ["leader", "s"],
       "commands": ["workbench.action.gotoSymbol"]
     },
@@ -215,5 +189,19 @@
   "svelte.enable-ts-plugin": true,
   "[svelte]": {
     "editor.defaultFormatter": "svelte.svelte-vscode"
-  }
+  },
+  "mssql.connectionGroups": [
+    {
+      "name": "ROOT",
+      "id": "1967A70A-1B7B-4089-B80C-2C7C33EB70A5"
+    }
+  ],
+  "mssql.connections": [],
+  "redhat.telemetry.enabled": false,
+  "security.promptForLocalFileProtocolHandling": false,
+  "errorLens.enabledDiagnosticLevels": [
+    "error",
+    "info",
+    "hint"
+  ]
 }
