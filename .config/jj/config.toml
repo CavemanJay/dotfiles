@@ -1,0 +1,30 @@
+#:schema https://jj-vcs.github.io/jj/latest/config-schema.json
+
+[ui]
+#editor = ['C:\Program Files\Git\usr\bin\vim.exe']
+editor = ['C:\Program Files\Neovim\bin\nvim.exe']
+# default-command = "l"
+default-command = "log"
+#diff-formatter = "delta"
+diff-formatter = ["difft", "--color=always", "$left", "$right"]
+
+[lazyjj]
+#diff-tool = "delta"
+#diff-tool = "difft"
+
+[merge-tools.difft]
+diff-args = ["--color=always", "$left", "$right"]
+
+#[merge-tools.delta]
+#diff-args = ["--side-by-side", "$left", "$right", "--width=$width"]
+#delta.diff-expected-exit-codes = [0, 1]
+
+[aliases]
+#l = ["log", "-r", "@ | bookmarks() | @- | git_head()"]
+#l = ["log", "-r", "@ | ancestors(bookmarks(), 2) | @- | git_head()"]
+#l = ["log", "-r", "@ | ancestors(bookmarks(), 2) | ancestors(tracked_remote_bookmarks(), 2) | @- | git_head() | visible_heads()"]
+#l = ["log", "-r", "@ | ancestors(bookmarks(), 1) | ancestors(tracked_remote_bookmarks(), 1) | @- | git_head() | visible_heads()"]
+#l = ["log", "-r", "immutable_heads()::@ | ancestors(bookmarks(), 1) | ancestors(tracked_remote_bookmarks(), 1) | git_head() | visible_heads()|fork_point(visible_heads())"]
+l = ["log", "-r", "immutable_heads()::@ | ancestors(bookmarks(), 1) | ancestors(tracked_remote_bookmarks(), 1) | git_head() | fork_point(visible_heads())::"]
+#l = ["log", "-r", "immutable_heads() | ancestors(bookmarks(), 1) | ancestors(tracked_remote_bookmarks(), 1) | git_head() | fork_point(visible_heads())::"]
+lfork =  ["log", "-r", "visible_heads() | fork_point(visible_heads()) | immutable_heads()"]
